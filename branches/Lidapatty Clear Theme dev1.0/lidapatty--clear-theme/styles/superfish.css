@@ -1,38 +1,12 @@
 /*** ESSENTIAL STYLES ***/
 
-#nav {
-	list-style: none;
-	float: right;
-	margin: 100px 0 0 0;
-	padding: 0;
-}
-
-#pages_menu {
-	list-style: none;
-	clear: right;
-	float: right;
-	margin: 0px 0 15px 0;
-	padding: 0;
-}
-
-#nav > li, #pages_menu > li {
-	float:left;
-	margin-left:0;
-}
-
-#nav ul *, #pages_menu ul * {
-	margin-top:		0;
-	padding:		0;
-	list-style:		none;
-}
-
 .sf-menu ul {
 	margin:0;
-	position:				absolute;
-	top:					-999em;
-	width:					208px; /* left offset of submenus need to match (see below) */
-	background:				url("../images/submenu-down.png") no-repeat;
-	background-position:	left bottom;
+	position: absolute;
+	top: -999em;
+	width: 208px; /* left offset of submenus need to match (see below) */
+	background: url("../images/submenu-down.png") no-repeat;
+	background-position: left bottom;
 }
 
 .sf-menu>li>ul{
@@ -111,6 +85,31 @@ ul.sf-menu li li li.sfHover ul {
 
 .sf-menu ul li:first-child{
     background:  url("../images/submenu.png") top left no-repeat;
+}
+#nav {
+	list-style: none;
+	float: right;
+	margin: 100px 0 0 0;
+	padding: 0;
+}
+
+#pages_menu {
+	list-style: none;
+	clear: right;
+	float: right;
+	margin: 0px 0 15px 0;
+	padding: 0;
+}
+
+#nav > li, #pages_menu > li {
+	float:left;
+	margin-left:0;
+}
+
+#nav ul *, #pages_menu ul * {
+	margin-top:		0;
+	padding:		0;
+	list-style:		none;
 }
 
 .sf-menu ul li:first-child>a{

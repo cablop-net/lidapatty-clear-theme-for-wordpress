@@ -1,18 +1,9 @@
-<?php
-/**
- * The Header for Invent theme.
- *
- * Displays all of the <head> section and everything up till <div id="content">
- *
- * @package Invent
- * @subpackage Clear Theme
- * @since Invent 1.0
- */
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 
 <head>
+
 	<title>
 <?php
 	/*
@@ -26,8 +17,8 @@
 	bloginfo( 'name' );
 
 	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
+	$site_description = get_bloginfo('description', 'display');
+	if ( $site_description  &&  (is_home() || is_front_page()) )
 		echo " | $site_description";
 
 	// Add a page number if necessary:
@@ -35,7 +26,7 @@
 		echo ' | ' . sprintf( __( 'Page %s' ), max( $paged, $page ) );
 
 ?>
-</title>
+	</title>
 
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
@@ -44,19 +35,17 @@
 	<?php if(get_option('invent-favicon')) { ?>
 	<link rel="shortcut icon" type="image/icon" href="<?php echo get_option('invent-favicon') ?>"/>
 	<?php } ?>
+
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/styles/site.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/styles/site_old.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/styles/nivo-slider.css" media="screen" />
-
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/styles/superfish.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/styles/fancybox.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/styles/invent-ui.css" media="all" />
-
 <!--[if IE]>
 	<link rel="stylesheet" type="text/css" href="styles/ie9.css"/>
 <![endif]-->
-
 <!--[if lte IE 8]>
 	<link rel="stylesheet" type="text/css" media="all"  href="<?php echo get_template_directory_uri(); ?>/styles/ie8.css"/>
 	<style type="text/css">
@@ -65,21 +54,16 @@
 	}
 	</style>
 <![endif]-->
-
 <!--[if lte IE 7]>
 	<link rel="stylesheet" type="text/css" media="all"  href="<?php echo get_template_directory_uri(); ?>/styles/ie7.css"/>
 <![endif]-->
-
 <!--[if lte IE 6]>
 	<link rel="stylesheet" type="text/css" media="all"  href="<?php echo get_template_directory_uri(); ?>/styles/ie6.css"/>
 <![endif]-->
-
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/style.css" media="screen" />
-
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fonts/Comfortaa_Bold/Comfortaa_Bold.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fonts/Comfortaa_Regular/Comfortaa_Regular.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fonts/Comfortaa_Thin/Comfortaa_Thin.css" media="screen" />
-
 	<style type="text/css">
 	
 		h1 {color: <?php echo get_option('invent-general-h1-color') ?> ; font-size: <?php echo get_option('invent-general-h1') ?>px}
@@ -104,6 +88,7 @@
 		}
 		
 	</style>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/styles/site.css" media="screen" />
 
 <?php
 	wp_head();
@@ -184,29 +169,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-<?php if( get_option('invent-socials-position')=='header' || get_option('invent-socials-position')=='both' ) { ?>
-	<?php if(get_option('invent-general-wrapper-style') == 'narrow') { ?>
-
-		<div class="wrapper">
-			<div id="social-container">
-				<?php get_template_part('socials'); ?>
-				<br class="clear"/>
-			</div>
-		</div>
-
-	<?php } else { ?>
-
-		<div id="social-container">
-			<div class="wrapper">
-				<?php get_template_part('socials'); ?>
-				<br class="clear"/>
-			</div>
-		</div>
-	<?php } ?>
-<?php } ?>
-	
-	<div class="wrapper">
+	<div id="div_header">
 		<h1 id="logo">
 <?php
 	{
@@ -243,15 +206,6 @@
 				</object>
 				<!--<![endif]-->
 			</object>
-		<!--
-			<a href="<?php echo home_url( '/' ); ?>">
-				<?php if(get_option('invent-logo')) { ?>
-				<img src="<?php echo get_option('invent-logo') ?>" alt="Invent" />
-				<?php } else { ?>
-				<img src="<?php echo get_template_directory_uri() ?>/images/logo.png" alt="Invent" />
-				<?php } ?>
-			</a>
-		-->
 <?php
 	};
 ?>
@@ -260,14 +214,16 @@
 	wp_nav_menu(
 			array(
 				'container' => '',
-				'link_before' => '<span>',
-				'link_after' => '</span>',
-				'menu_id' => 'nav',
+				'menu_id' => 'nav_menu',
 				'menu_class' => 'sf-menu',
 				'theme_location' => 'primary',
 				'fallback_cb' => false
 			));
 ?>
+		<div id="header_search">
+			<?php get_search_form( $echo ); ?>
+		</div>
+		<?php get_template_part('socials'); ?>
 		<ul class="sf-menu sf-js-enabled sf-shadow" id="pages_menu">
 			<!--li class="<?php if (!is_paged() && is_home()) { ?>current_page_item<?php } else { ?>page_item<?php } ?>"><a href="<?php echo get_settings('home'); ?>/"><?php _e('HOME','monochrome'); ?></a></li-->
 <?php
@@ -281,7 +237,7 @@
 			));
 ?>
 		</ul>
-
+		<br class="clear"/>
 	</div>
 
 	<?php
