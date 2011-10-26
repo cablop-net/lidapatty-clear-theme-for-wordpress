@@ -1,0 +1,66 @@
+.image-hover,.image-hover-icon{
+	filter: alpha(opacity=0);
+}
+
+
+body{
+	overflow:visible;
+        height:100%;
+}
+
+.wrapper{
+    overflow:visible;
+}
+
+#widgets-container, #widgets-container .wrapper{
+    overflow:visible;
+    height:100%;
+}
+
+#scrolltop-container{
+
+}
+
+#comments #submit{
+	margin-left: 450px;
+}
+
+hr.empty{
+	visibility: hidden;
+}
+
+
+#demopanel{
+	height:380px;
+}
+
+
+
+#piecemaker-wrapper{
+	width:960px;
+	margin:auto;
+	padding:0;
+	position:relative;
+}
+
+#piecemaker-space{
+	width:960px;
+	margin:0;
+	padding:0;
+	left:0;
+	top:-60px;
+}
+
+.next{
+	float:left;
+}
+
+.prev{margin-right:10px;}
+
+.prev .arrow-left{
+	display:none;
+}
+
+.next .arrow-right{
+	display:none;
+}

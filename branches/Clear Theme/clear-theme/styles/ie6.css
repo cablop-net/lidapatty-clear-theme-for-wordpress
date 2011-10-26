@@ -1,0 +1,113 @@
+body{
+    text-align:center;
+}
+.wrapper{
+    text-align:left;
+}
+
+#content .portfolio-1-2 li, #content .portfolio-1-1 li{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#content .portfolio-1-3 li{
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+#content .portfolio-1-4 li{
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+#fancybox-title{
+    text-align: left;
+}
+
+
+.column-1-2, .column-1-3, .column-1-4, .column-2-3, .column-3-4{
+    margin:0 5px 0 0;
+    padding:0;
+}
+
+.column-1-2-last, .column-1-3-last, .column-2-3-last, .column-1-4-last,column-3-4-last{
+    margin:0;
+    padding:0;
+}
+/** OK **/
+
+#scrolltop-container{
+    display:none;
+}
+
+/* Nivo slider doesn't work in IE6 and older */
+#slider-wrapper, .image-hover{
+    display:none;
+}
+
+ul.twitter-list li div:first-child{
+    height:100%;
+}
+
+.widget_twitter .decorator{
+	display:none;
+}
+
+#widgets-container{
+	height:auto;
+	margin-bottom:20px;
+}
+
+#widgets-container .wrapper{
+	height:auto;
+}
+
+#social{
+	margin-top:-60px;
+}
+
+code{
+	width:100%;
+	overflow:scroll;
+}
+
+.button-small-light, .button-small-light span,.button-big-light, .button-big-light span{
+	background: #dedede;
+}
+
+.button-small-red2, .button-small-red2 span, .button-big-red2, .button-big-red2 span,
+.button-small-red, .button-small-red span, .button-big-red, .button-big-red span{
+	background:#f75151;
+}
+
+.button-small-blue2, .button-small-blue2 span, .button-big-blue2, .button-big-blue2 span,
+.button-small-blue, .button-small-blue span, .button-big-blue, .button-big-blue span{
+	background:#53acf7;
+}
+
+.button-small-dark2, .button-small-dark2 span, .button-big-dark2, .button-big-dark2 span,
+.button-small-dark, .button-small-dark span, .button-big-dark, .button-big-dark span{
+	background:#404040;
+	color:#eee;
+}
+
+.button-small-green2, .button-small-green2 span, .button-big-green2, .button-big-green2 span,
+.button-small-green, .button-small-green span, .button-big-green, .button-big-green span{
+	background:#52aa3e;
+}
+
+.button-big-green2, .button-big-green2 span,
+.button-big-blue2, .button-big-blue2 span,
+.button-big-red2, .button-big-red2 span,
+.button-big-light, .button-big-light span,
+.button-big-blue, .button-big-blue span,
+.button-big-green, .button-big-green span,
+.button-big-red, .button-big-red span,
+.button-big-dark2, .button-big-dark2 span,
+.button-big-dark, .button-big-dark span{
+	height:34px;
+}
+
+.portfolio-1-1 li, .portfolio-1-2 li, .portfolio-1-3 li, .portfolio-1-4 li{
+	margin:0;
+}
