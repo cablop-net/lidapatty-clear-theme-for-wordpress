@@ -38,16 +38,17 @@ add_option('invent-general-h3', '22');
 add_option('invent-general-h4', '18');
 add_option('invent-general-h5', '16');
 add_option('invent-general-h6', '14');
-
 add_option('invent-general-h1-color', '#444444');
 add_option('invent-general-h2-color', '#444444');
 add_option('invent-general-h3-color', '#444444');
 add_option('invent-general-h4-color', '#444444');
 add_option('invent-general-h5-color', '#444444');
 add_option('invent-general-h6-color', '#444444');
-
+add_option('invent-general-nav-font-size', 12);
 add_option('invent-general-enable-slider', '1');
 add_option('invent-general-wrapper-style', 'wide');
+
+add_option('invent-gallery-allCategoryTitle', 'All');
 
 add_option('invent-slider-effects', 'fade');
 add_option('invent-slider-titles', Array());
@@ -58,7 +59,6 @@ add_option('invent-slider-pause-time', '6.5');
 add_option('invent-slider-caption-color', '#444444');
 add_option('invent-slider-control-navigation', '1');
 add_option('invent-slider-direction-navigation', '1');
-
 
 add_option('invent-slider-piecemaker-effects', 'easeInOutQuart');
 add_option('invent-slider-piecemaker-slices', '13');
@@ -71,6 +71,7 @@ add_option('invent-slider-piecemaker-delay', '0.1');
 add_option('invent-footer-background-color', '#2c2c2c');
 
 add_option('invent-blog-sidebar-position', '2');
+add_option('invent-blog-show-metadata', '1');
 
 add_option('invent-markers-title', '');
 add_option('invent-markers-lat', '');
@@ -80,11 +81,15 @@ add_option('invent-map-zoom', 5);
 
 add_option('invent-socials', Array());
 add_option('invent-socials-onoff', Array());
+add_option('invent-socials-position', 'footer');
 
-add_image_size('invent-huge', 690, 360, true);
-add_image_size('invent-big', 450, 235, true);
-add_image_size('invent-medium', 290, 150, true);
-add_image_size('invent-small', 210, 110, true);
+add_image_size('invent-small', 210, 110, true); // 1-4
+add_image_size('invent-medium', 290, 150, true);// 1-3
+add_image_size('invent-big', 450, 235, true);   // 1-2
+add_image_size('invent-large', 610, 315, true); // 2-3
+add_image_size('invent-huge', 690, 360, true);  // 3-4
+add_image_size('invent-full', 930, 480, true);  // 1-1
+
 add_image_size('invent-widget-small', 60, 36, true);
 add_image_size('invent-post-thumbnail', 690, 2000, false);
 add_image_size('invent-post-wide-thumbnail', 930, 2000, false);
@@ -102,7 +107,7 @@ add_image_size('invent-post-wide-thumbnail', 930, 2000, false);
  * @param string $text Optional, default is false. If string, then will be link text.
  * @return string HTML content.
  */
-function invent_get_attachment_link($id = 0, $size = 'thumbnail', $permalink = false, $icon = false, $text = false, $group = 'default') {
+function invent_get_attachment_link($id = 0, $size = 'thumbnail', $permalink = false, $icon = false, $text = false, $group = 'default', $link=true) {
 	$id = intval($id);
 	$_post = & get_post($id);
 
@@ -125,9 +130,11 @@ function invent_get_attachment_link($id = 0, $size = 'thumbnail', $permalink = f
 	if (trim($link_text) == '')
 		$link_text = $_post->post_title;
 
-	return apply_filters('wp_get_attachment_link', '<a href="' . $url . '" title="' . $post_title . '" rel="gallery-box-' . $group . '"><span class="image-hover"></span><span class="image-hover-icon"></span>' . $link_text . '</a>', $id, $size, $permalink, $icon, $text);
+	if($link)
+		return apply_filters('wp_get_attachment_link', '<a href="' . $url . '" title="' . $post_title . '" rel="gallery-box-' . $group . '"><span class="image-hover"></span><span class="image-hover-icon"></span>' . $link_text . '</a>', $id, $size, $permalink, $icon, $text);
+	else
+		return apply_filters('wp_get_attachment_link', $link_text, $id, $size, $permalink, $icon, $text);
 }
-
 
 if ( function_exists( 'register_nav_menus' ) ) {
 	register_nav_menu('primary', __('Primary Navigation', 'invent'));
@@ -135,10 +142,6 @@ if ( function_exists( 'register_nav_menus' ) ) {
 
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size(690, 290, true);
-
-
-
-
 
 function invent_formatter($content) {
 	$new_content = '';
@@ -169,12 +172,7 @@ function invent_formatter($content) {
 	return $new_content;
 }
 
-// Remove the 2 main auto-formatters
-remove_filter('the_content', 'wpautop');
-remove_filter('the_content', 'wptexturize');
-
 // Before displaying for viewing, apply this function
-add_filter('the_content', 'invent_formatter', 99);
 add_filter('widget_text', 'invent_formatter', 99);
 
 function invent_get_the_post_thumbnail($postId = 0, $wide = false) {
@@ -207,7 +205,6 @@ function invent_comment_id_fields($result, $id=0, $replytoid=0) {
 
 add_filter('comment_id_fields', 'invent_comment_id_fields', 100, 3);
 
-
 function invent_get_comment_reply_link($args = array(), $comment = null, $post = null) {
 	global $user_ID;
 
@@ -237,3 +234,65 @@ function invent_get_comment_reply_link($args = array(), $comment = null, $post =
 		$link = '<a class="comment-reply-link" href="' . esc_url( add_query_arg( 'replytocom', $comment->comment_ID ) ) . '#' . $respond_id . '" onclick="return addComment.moveForm(\''.($add_below-$comment->comment_ID).'\', \''.$comment->comment_ID.'\', \''.$respond_id.'\', \''.$post->ID.'\')">'.$reply_text.'</a>';
 	return $link; //apply_filters('comment_reply_link', $before . $link . $after, $args, $comment, $post);
 }
+
+
+
+/**
+ * new gallery managment
+ * @since	2.0
+ */
+/*
+function custom_types_init(){
+
+	   $args = array(
+		'labels'	=> array(
+			'name' => __('Gallery items', 'invent'),
+			'singular_label' => __('Gallery item', 'invent'),
+			'add_new_item' => __('Add new gallery item','invent')
+
+		),
+		'public' => true,
+		'show_ui' => true, // UI in admin panel
+		'_builtin' => false, // It's a custom post type, not built in!
+		'_edit_link' => 'post.php?post=%d',
+		'capability_type' => 'post',
+		'hierarchical' => true,
+		'rewrite' => array("slug" => "gallery"), // Permalinks format
+		'supports' => array('title')
+
+    );
+
+    register_post_type( 'invent_gallery_item' , $args );
+
+
+register_taxonomy(
+	'invent_gallery',
+	'invent_gallery_item',
+	array('hierarchical' => true,
+		'labels' => array(
+			'name' => __('Galleries'),
+			'singular_label' => __('Gallery'),
+			'add_new_item' => __('Add gallery','invent'),
+			'all_items' => __('All Galleries','invent')
+		),
+		'query_var' => 'invent_gallery'
+	)
+);
+
+register_taxonomy(
+	'invent_gallery_item_tag',
+	'invent_gallery_item',
+	array('hierarchical' => false,
+		'admin_ui' => false,
+		'query_var' => 'invent_gallery',
+		'labels' => array(
+			'name' => 'Tags'
+		)
+	)
+);
+
+
+}
+
+add_action('init', 'custom_types_init');
+*/

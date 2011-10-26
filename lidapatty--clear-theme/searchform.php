@@ -4,3 +4,4 @@
 					<input type="submit" class="searchsubmit" value="Search" />
 				</div>
 			</form>
+			<div class="clear"></div>

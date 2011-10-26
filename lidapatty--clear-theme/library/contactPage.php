@@ -6,7 +6,7 @@ wp_localize_script('invent-contact', 'inventContact', array(
 	)
 );
 
-$contactForm = '<form id="contact-form" action="'.admin_url( 'admin-ajax.php' ).'" method="post">
+$contactForm = '<form id="contact-form" action="'.admin_url( 'admin-ajax.php' ).'" method="post" class="invent-form">
 <fieldset>
 <input type="hidden" name="nonce" id="contact-nonce" value="'.$nonce.'" />
 <input type="text" name="name" id="contact-name" value="" class="text-input required" />
@@ -21,5 +21,5 @@ $contactForm = '<form id="contact-form" action="'.admin_url( 'admin-ajax.php' ).
 <textarea name="message" id="contact-message" class="required" rows="12" cols="10"></textarea>
 <label for="contact-message">'.__('Message','invent').'</label>
 <p><label class="error" for="contact-message" id="contact-message-error">'.__('This field is required.','invent').'</label></p>
-<p><input type="submit" name="submit" id="submit-button" value="'.__('Submit.','invent').'" /></p>
+<p><input type="submit" name="submit" id="submit-button" value="'.__('Submit','invent').'" /></p>
 </fieldset></form>';

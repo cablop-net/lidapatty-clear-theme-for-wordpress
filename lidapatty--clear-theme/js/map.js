@@ -1,4 +1,4 @@
-$(function (){
+jQuery(function (){
 	var inventContactMap = {
 		marker: null,
 		infoWindow: null,

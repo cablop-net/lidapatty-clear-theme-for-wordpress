@@ -1,5 +1,68 @@
 <?php
 /**
+ * Twitter widget class
+ *
+ * @version 1.1.1
+ */
+class Invent_Widget_Twitter extends WP_Widget {
+
+	function __construct() {
+		$widget_ops = array('classname' => 'widget_twitter', 'description' => __( 'The most recent tweets' ) );
+		parent::__construct('twitter', __('Twitter'), $widget_ops);
+		$this->alt_option_name = 'widget_twitter';
+	}
+
+	function widget( $args, $instance ) {
+
+ 		extract($args, EXTR_SKIP);
+ 		$output = '';
+ 		$title = apply_filters('widget_title', empty($instance['title']) ? __('Twitter') : $instance['title']);
+ 		$user = empty($instance['user']) ? '' : $instance['user'];
+
+		if ( ! $number = absint( $instance['number'] ) )
+ 			$number = 2;
+
+		$output .= $before_widget;
+		if ( $title )
+			$output .= $before_title . $title . $after_title;
+
+		$output .= '<form class="twitter-data" action="">';
+		$output .= '<div><input type="hidden" name="user" value="'.$user.'"/></div>';
+		$output .= '<div><input type="hidden" name="number" value="'.$number.'" /></div>';
+		$output .= '</form>';
+		$output .= $after_widget;
+
+		wp_enqueue_script( 'twitter_widget', get_template_directory_uri().'/js/twitter.js', array(), '1.0' );
+		echo $output;
+	}
+
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['number'] = absint( $new_instance['number'] );
+		$instance['user'] = strip_tags($new_instance['user']);
+
+		return $instance;
+	}
+
+	function form( $instance ) {
+		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
+		$number = isset($instance['number']) ? absint($instance['number']) : 3;
+		$user = isset($instance['user']) ? esc_attr($instance['user']) : '';
+?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','invent'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of comments to show:','invent'); ?></label>
+		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('user'); ?>"><?php _e('User:','invent'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('user'); ?>" name="<?php echo $this->get_field_name('user'); ?>" type="text" value="<?php echo $user; ?>" /></p>
+<?php
+	}
+}
+
+/**
  * Recent Comments widget class
  *
  * @version 3.1.1
@@ -404,6 +467,7 @@ class Invent_Widget_PopularPosts extends WP_Widget {
 			register_widget('Invent_Widget_Flickr');
 			register_widget('Invent_Widget_PopularPosts');
 			register_widget('random_image_widget');
+			register_widget('Invent_Widget_Twitter');
 
 			add_filter('wp_list_categories', Array($this, 'repairCategoriesWidget'));
 		}

@@ -95,6 +95,7 @@ class Invent_Ajax{
 							</html>';
 
 				
+				ob_start();
 				if (!class_exists("PHPMailer")) {
 					require_once(ABSPATH."wp-includes/class-phpmailer.php");
 				}
@@ -115,13 +116,16 @@ class Invent_Ajax{
 				if (!$mail->Send()) {
 					$error = true;
 				}
-
+				$phpErr = ob_get_clean();
+				if($error){
+					$data['php-errors'] = $phpErr;
+				}
 			}
 
 			if(!$error) {
 				$data = Array(
 					'type' => 'good',
-					'message' => get_option('invent-contact-successMessage')
+					'message' => get_option('invent-contact-successMessage'),
 				);
 			}
 
@@ -131,12 +135,8 @@ class Invent_Ajax{
 		die;
 	}
 
-	public function importDummyData() {
-		$this->checkPrivileges();
-		header("Content-Type: application/json");
-		@ini_set('memory_limit', '256M'); // to avoid 505 Error during dummy data importing
-		
-		// RESET
+
+	private function importDummyDataReset(){
 		update_option('invent-favicon', '');
 
 		update_option('invent-copyrightText', 'Copyright &copy; 2010. All rights reserved');
@@ -193,14 +193,6 @@ consectetur adipiscing elit.'));
 		update_option('invent-socials', Array());
 		update_option('invent-socials-onoff', Array());
 
-		include(TEMPLATEPATH.'/library/plugins/wordpress-importer/wordpress-importer.php');
-
-		$wp_import = new WP_Import();
-		$_POST['fetch_attachments'] = true;
-		$wp_import->fetch_attachments = true;
-		ob_start();
-		$wp_import->import(TEMPLATEPATH.'/library/data/data.xml');
-		ob_end_clean();
 
 		$slides = Array('http://invent-themes.com/demo/clear-theme/wp-content/uploads/2011/03/119.jpg',
 						'http://invent-themes.com/demo/clear-theme/wp-content/uploads/2011/03/126.jpg',
@@ -212,6 +204,7 @@ consectetur adipiscing elit.'));
 		$inventSlides = Array();
 		$siteurl = get_option('siteurl');
 
+		$wp_import = new WP_Import();
 
 		include_once(TEMPLATEPATH.'/library/imageCreator.php');
 		foreach($slides as $url) {
@@ -221,6 +214,7 @@ consectetur adipiscing elit.'));
 				$inventSlides[] = $siteurl.'/'.substr($tmp['file'],strlen(ABSPATH));
 				$image = new imageCreator($tmp['file']);
 				$image->createPNG(Invent_Admin::getThumbnailPath($tmp['file']), 125, 100, true);
+				unset($image);
 			}
 			else
 				print_r($tmp->get_error_messages ());
@@ -228,33 +222,7 @@ consectetur adipiscing elit.'));
 
 		update_option('invent-slider-bgcolors', $inventSlidesBgColors);
 		update_option('invent-slider', $inventSlides);
-
-		// setting homepage and blog page
-		$pages = get_pages();
-
-		foreach($pages as $page)
-		{
-			if( $page->guid == 'http://invent-themes.com/demo/clear/?page_id=103' ) {
-				update_option('page_for_posts',$page->ID);
-			}
-			elseif( $page->guid == 'http://invent-themes.com/demo/clear/?page_id=4' ) {
-				update_option('show_on_front', 'page');
-				update_option('page_on_front', $page->ID);
-			}
-		}
-
-		// make primary menu active
-		$menuId = 0;
-		$navMenus = wp_get_nav_menus( array('orderby' => 'name') );
-		foreach($navMenus as $menu){
-			if($menu->name == 'Navigation'){
-				$menuId = (int) $menu->term_id;
-				break;
-			}
-		}
-		set_theme_mod( 'nav_menu_locations', array_map( 'absint', Array('primary' => $menuId) ) );
-
-		// add widgets
+// add widgets
 
 		$sidebars_widgets = array(
 			'wp_inactive_widgets' => array(),
@@ -357,16 +325,13 @@ consectetur adipiscing elit.'));
 				),
 				'_multiwidget' => 1
 			),
-			'widget_twitter' => array(
-				'number' => 1,
-				'1' => Array (
+			'widget_invent_twitter' => array(
+				1 => Array (
 					'title' => 'Twitter',
 					'username' => 'damianwatracz',
-					'num' => 2,
-					'update' => 1,
-					'hyperlinks' => 1,
-					'twitter_users' => ''
-				)
+					'number' => 2
+				),
+				'_multiwidget' => 1
 			),
 			'widget_flickr' => array (
 				5 => array (
@@ -388,8 +353,58 @@ consectetur adipiscing elit.'));
 
 		foreach($widgets as $name => $value)
 		update_option($name, $value);
+	}
 
-		echo json_encode($file);
+	public function importDummyData() {
+		$this->checkPrivileges();
+		header("Content-Type: application/json");
+		@ini_set('memory_limit', '256M'); // to avoid 500 Error during dummy data importing
+		
+		include_once(TEMPLATEPATH.'/library/plugins/wordpress-importer/wordpress-importer.php');
+
+		$part = !isset($_POST['part']) ? 0 : abs(floor($_POST['part']));
+
+		if($part==0){
+			// RESET
+			$this->importDummyDataReset();
+		} else if($part<21 && file_exists(TEMPLATEPATH.'/library/data/'.$part.'.php')) {
+			$wp_import = new WP_Import();
+			$_POST['fetch_attachments'] = true;
+			$wp_import->fetch_attachments = true;
+			ob_start();
+			$wp_import->import(TEMPLATEPATH.'/library/data/'.$part.'.php');
+
+			ob_end_clean();
+		}
+
+		if($part==20) {
+			// setting homepage and blog page
+			$pages = get_pages();
+
+			foreach($pages as $page)
+			{
+				if( $page->guid == 'http://invent-themes.com/demo/clear/?page_id=103' ) {
+					update_option('page_for_posts',$page->ID);
+				}
+				elseif( $page->guid == 'http://invent-themes.com/demo/clear/?page_id=4' ) {
+					update_option('show_on_front', 'page');
+					update_option('page_on_front', $page->ID);
+				}
+			}
+			
+			// make primary menu active
+			$menuId = 0;
+			$navMenus = wp_get_nav_menus( array('orderby' => 'name') );
+			foreach($navMenus as $menu){
+				if($menu->name == 'Navigation'){
+					$menuId = (int) $menu->term_id;
+					break;
+				}
+			}
+			set_theme_mod( 'nav_menu_locations', array_map( 'absint', Array('primary' => $menuId) ) );
+
+		}
+		echo json_encode('OK');
 		die;
 	}
 

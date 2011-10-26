@@ -1,27 +1,7 @@
 /*
-Theme Name: Clear Theme
-Theme URI: http://invent-themes.com
-Description: Clear Theme is a clean, minimalist and modern wordpress theme suitable for any kind of website such as portfolio, business, blog, photography or gallery. The great combination of light color schemes creates an elegant and high visual impact experience eighter you use this for photography, commercial business or small informational websites.
-Author: Invent Group
-Version: 1.0
-Tags: light, custom-colors, translation-ready, theme-options, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-width, flexible-width
-License:
-License URI:
-Author URI:
+Theme Name: Lidapatty Clear Theme
+Description: Lidapatty Clear Theme is made for Lidapatty International Consulting SAS and it is based on the original Clear Theme by Invent-Themes (http://invent-themes.com).
+Version: dev 1.0
+Author: cablop & kuri
+Author URL: http://cablop.net
 */
-
-.wp-caption css, .wp-caption-text, .sticky, .gallery-caption, .bypostauthor{
-	margin:0;
-}
-
-.alignright{
-	text-align: right;
-}
-
-.alignleft{
-	text-align:left;
-}
-
-.aligncenter{
-	text-align:center;
-}
