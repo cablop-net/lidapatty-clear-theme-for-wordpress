@@ -1,0 +1,810 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Lidapatty Clear Theme - Español\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-09-16 12:14-0000\n"
+"PO-Revision-Date: 2011-09-16 14:35-0000\n"
+"Last-Translator: cablop <cablop@gmail.com>\n"
+"Language-Team: cablop.net <cablop@cablop.net>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SearchPath-0: ../..\n"
+
+#: ../../footer.php:40
+msgid "Visit also our social profiles:"
+msgstr "Visite también nuestros perfiles sociales:"
+
+#: ../../loop.php:47
+#: ../../loop.php:114
+msgid "Older posts"
+msgstr "Artículos  anteriores"
+
+#: ../../loop.php:48
+#: ../../loop.php:115
+msgid "Newer posts"
+msgstr "Entradas más recientes"
+
+#: ../../loop.php:55
+msgid "Not Found"
+msgstr "No Encontrado"
+
+#: ../../loop.php:57
+msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
+msgstr "Lo sentimos, pero no hay resultados para el archivo solicitado. Quizás una búsqueda pueda encontrar algún artículo relacionado."
+
+#: ../../loop.php:84
+#: ../../single.php:52
+msgid "% Comments"
+msgstr "% Comentarios"
+
+#: ../../loop.php:86
+#: ../../single.php:54
+msgid "No Comments"
+msgstr "Sin Comentarios"
+
+#: ../../loop.php:88
+#: ../../single.php:56
+msgid "1 Comment"
+msgstr "1 Comentario"
+
+#: ../../loop.php:100
+msgid "Read more..."
+msgstr "Leer más..."
+
+#: ../../header.php:35
+#, php-format
+msgid "Page %s"
+msgstr "Página %s"
+
+#: ../../header.php:276
+msgid "HOME"
+msgstr "INICIO"
+
+#: ../../comments.php:2
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Este artículo está protegido por contraseña. Ingrese la contraseña para ver los comentarios."
+
+#: ../../comments.php:21
+#: ../../comments.php:43
+msgid "Older Comments"
+msgstr "Comentarios Anteriores"
+
+#: ../../comments.php:22
+#: ../../comments.php:44
+msgid "Newer Comments"
+msgstr "Comentarios Más Recientes"
+
+#: ../../comments.php:52
+msgid "Comments are closed."
+msgstr "Los comentarios están cerrados."
+
+#: ../../comments.php:61
+#: ../../library/contactPage.php:13
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../comments.php:63
+msgid "Email"
+msgstr "Email."
+
+#: ../../comments.php:65
+msgid "Website"
+msgstr "Sitio web."
+
+#: ../../library/contactPage.php:14
+#: ../../library/contactPage.php:17
+#: ../../library/contactPage.php:23
+msgid "This field is required."
+msgstr "Este campo es requerido."
+
+#: ../../library/contactPage.php:16
+msgid "Your e-mail"
+msgstr "Su e-mail"
+
+# También puede ser:
+# "Ingrese un e-mail correcto"
+#: ../../library/contactPage.php:18
+msgid "Enter correct e-mail."
+msgstr "Ingrese el e-mail correctamente."
+
+#: ../../library/contactPage.php:20
+msgid "Subject"
+msgstr "Asunto"
+
+#: ../../library/contactPage.php:22
+msgid "Message"
+msgstr "Mensaje"
+
+# También podría ser:
+# "Envío."
+#: ../../library/contactPage.php:24
+msgid "Submit"
+msgstr "Enviar"
+
+#: ../../library/Invent/Admin.php:6
+#: ../../library/Invent/Ajax.php:6
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Usted no tiene suficientes permisos para acceder a esta página."
+
+# el contexto de este texto no es claro
+#: ../../library/Invent/Site.php:55
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s a las %2$s"
+
+#: ../../library/Invent/Site.php:58
+msgid "Your comment is awaiting moderation."
+msgstr "Su comentario esta esperando ser moderado."
+
+# También podría ser "(Edición)"
+#: ../../library/Invent/Site.php:61
+#: ../../library/Invent/Site.php:78
+msgid "(Edit)"
+msgstr "(Editar)"
+
+#: ../../library/Invent/Site.php:78
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: ../../library/Invent/Site.php:111
+msgid "Next page"
+msgstr "Página siguiente"
+
+#: ../../library/Invent/Site.php:112
+msgid "Previous page"
+msgstr "Página anterior"
+
+#: ../../library/Invent/globals.php:115
+msgid "Missing Attachment"
+msgstr "Adjunto Faltante"
+
+#: ../../library/Invent/globals.php:140
+msgid "Primary Navigation"
+msgstr "Navegación Primaria"
+
+#: ../../library/Invent/globals.php:211
+msgid "Reply"
+msgstr "Responder"
+
+#: ../../library/Invent/globals.php:212
+msgid "Log in to Reply"
+msgstr "Ingrese para responder"
+
+#: ../../library/Invent/Widgets.php:10
+msgid "The most recent tweets"
+msgstr "Comentarios más recientes"
+
+#: ../../library/Invent/Widgets.php:11
+#: ../../library/Invent/Widgets.php:19
+msgid "Twitter"
+msgstr "Twitter"
+
+#: ../../library/Invent/Widgets.php:53
+#: ../../library/Invent/Widgets.php:141
+#: ../../library/Invent/Widgets.php:248
+#: ../../library/Invent/Widgets.php:400
+msgid "Title:"
+msgstr "Título:"
+
+#: ../../library/Invent/Widgets.php:56
+#: ../../library/Invent/Widgets.php:144
+msgid "Number of comments to show:"
+msgstr "Número de comentarios a mostrar:"
+
+#: ../../library/Invent/Widgets.php:59
+msgid "User:"
+msgstr "Usuario:"
+
+#: ../../library/Invent/Widgets.php:73
+#: ../../library/Invent/Widgets.php:153
+msgid "The most recent comments"
+msgstr "Comentarios más recientes"
+
+#: ../../library/Invent/Widgets.php:74
+#: ../../library/Invent/Widgets.php:100
+#: ../../library/Invent/Widgets.php:413
+msgid "Recent Comments"
+msgstr "Comentarios Recientes"
+
+#: ../../library/Invent/Widgets.php:154
+msgid "Flickr images"
+msgstr "Imagenes de Flickr"
+
+#: ../../library/Invent/Widgets.php:177
+msgid "Flickr"
+msgstr "Flickr"
+
+#: ../../library/Invent/Widgets.php:216
+msgid "Flickr gallery is empty"
+msgstr "La galería de flickr está vacía"
+
+#: ../../library/Invent/Widgets.php:219
+msgid "RSS URL not defined"
+msgstr "La URL del RSS no está definida"
+
+#: ../../library/Invent/Widgets.php:251
+msgid "RSS Url:"
+msgstr "URL del RSS:"
+
+#: ../../library/Invent/Widgets.php:254
+msgid "Number of photos to show:"
+msgstr "Número de imágenes a mostrar:"
+
+# ¿"Widget, Entrada al Azar"?
+#: ../../library/Invent/Widgets.php:280
+msgid "Random Post Widget"
+msgstr "Widget de Entrada Aleatoria"
+
+#: ../../library/Invent/Widgets.php:281
+msgid "Displays a random post image."
+msgstr "Muestre una imágen de la entrada al azar."
+
+#: ../../library/Invent/Widgets.php:299
+msgid "Random Post"
+msgstr "Entrada al azar"
+
+#: ../../library/Invent/Widgets.php:370
+msgid "Widget Title"
+msgstr "Título del Widget"
+
+#: ../../library/Invent/Widgets.php:372
+msgid "Select a Post Category to display images from, or All Categories to disable filtering"
+msgstr "Seleccione una Categoría de Entradas de la cual mostrar imágenes, o Todas las Categorías para deshabilitar el filtrado"
+
+#: ../../library/Invent/Widgets.php:373
+msgid "All Categories"
+msgstr "Todas las Categorías"
+
+#: ../../library/Invent/Widgets.php:383
+msgid "The most popular posts"
+msgstr "Las entradas más populares"
+
+#: ../../library/Invent/Widgets.php:384
+msgid "Popular posts"
+msgstr "Entradas populares"
+
+#: ../../library/Invent/Widgets.php:403
+msgid "Number of posts to show:"
+msgstr "Número de entradas a mostrar:"
+
+#: ../../library/Invent/Widgets.php:433
+msgid "No posts to display"
+msgstr "No hay entradas para mostrar"
+
+#: ../../library/Invent/Widgets.php:478
+#: ../../library/Invent/Widgets.php:480
+msgid "Sidebar widget area"
+msgstr "Area de widgets lateral"
+
+#: ../../library/Invent/Widgets.php:489
+msgid "First footer widget area"
+msgstr "Primer área de widgets del pié de página"
+
+#: ../../library/Invent/Widgets.php:491
+#: ../../library/Invent/Widgets.php:501
+#: ../../library/Invent/Widgets.php:511
+#: ../../library/Invent/Widgets.php:521
+msgid "Footer widget area"
+msgstr "Área de widgets del pié de página"
+
+#: ../../library/Invent/Widgets.php:499
+msgid "Second footer widget area"
+msgstr "Segunda área de widgets del pié de página"
+
+#: ../../library/Invent/Widgets.php:509
+msgid "Third footer widget area"
+msgstr "Tercer área de widgets del pié de página"
+
+#: ../../library/Invent/Widgets.php:519
+msgid "Fourth footer widget area"
+msgstr "Cuarta área de widgets del pié de página"
+
+#: ../../library/Invent/Walker/Comment.php:147
+#, php-format
+msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
+msgstr "<cite class=\"fn\">%s</cite> <span class=\"says\">dice:</span>"
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:131
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:140
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:191
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:199
+msgid "Sorry, there has been an error."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:132
+msgid "The file does not exist, please try again."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:175
+msgid "All done."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:175
+msgid "Have fun!"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:176
+msgid "Remember to update the passwords and roles of imported users."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:207
+#, php-format
+msgid "This WXR file (version %s) may not be supported by this version of the importer. Please consider updating."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:232
+#, php-format
+msgid "Failed to import author %s. Their posts will be attributed to the current user."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:258
+msgid "Assign Authors"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:259
+msgid "To make it easier for you to edit and save the imported content, you may want to reassign the author of the imported item to an existing user of this site. For example, you may want to import all the entries as <code>admin</code>s entries."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:261
+#, php-format
+msgid "If a new user is created by WordPress, a new password will be randomly generated and the new user&#8217;s role will be set as %s. Manually changing the new user&#8217;s details will be necessary."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:271
+msgid "Import Attachments"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:274
+msgid "Download and import file attachments"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:291
+msgid "Import author:"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:302
+msgid "or create new user with login name:"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:305
+msgid "as a new user:"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:313
+msgid "assign posts to an existing user:"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:315
+msgid "or assign posts to an existing user:"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:316
+msgid "- Select -"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:364
+#, php-format
+msgid "Failed to create new user for %s. Their posts will be attributed to the current user."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:413
+#, php-format
+msgid "Failed to import category %s"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:451
+#, php-format
+msgid "Failed to import post tag %s"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:495
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:623
+#, php-format
+msgid "Failed to import %s %s"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:517
+#, php-format
+msgid "Failed to import &#8220;%s&#8221;: Invalid post type %s"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:538
+#, php-format
+msgid "%s &#8220;%s&#8221; already exists."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:595
+#, php-format
+msgid "Failed to import %s &#8220;%s&#8221;"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:734
+msgid "Menu item skipped due to missing menu slug"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:741
+#, php-format
+msgid "Menu item skipped due to invalid menu slug: %s"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:804
+msgid "Fetching attachments is not enabled"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:817
+msgid "Invalid file type"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:861
+msgid "Remote server did not respond"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:867
+#, php-format
+msgid "Remote server returned error response %1$d %2$s"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:874
+msgid "Remote file is incorrect size"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:879
+msgid "Zero size file downloaded"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:885
+#, php-format
+msgid "Remote file is too large, limit is %s"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:984
+msgid "Import WordPress"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:991
+#, php-format
+msgid "A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:1006
+msgid "Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import the posts, pages, comments, custom fields, categories, and tags into this site."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/wordpress-importer.php:1007
+msgid "Choose a WXR file to upload, then click Upload file and import."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/parsers.php:42
+#: ../../library/plugins/wordpress-importer/parsers.php:63
+msgid "There was an error when reading this WXR file"
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/parsers.php:43
+msgid "Details are shown above. The importer will now try again with a different parser..."
+msgstr ""
+
+#: ../../library/plugins/wordpress-importer/parsers.php:67
+#: ../../library/plugins/wordpress-importer/parsers.php:72
+#: ../../library/plugins/wordpress-importer/parsers.php:251
+#: ../../library/plugins/wordpress-importer/parsers.php:433
+msgid "This does not appear to be a WXR file, missing/invalid WXR version number"
+msgstr ""
+
+#: ../../library/templates/socialTemplate.php:3
+msgid "Social media settings"
+msgstr "Social media, opciones"
+
+#: ../../library/templates/socialTemplate.php:10
+msgid "Socials position"
+msgstr "Posición de Socials"
+
+#: ../../library/templates/socialTemplate.php:14
+msgid "Header"
+msgstr "Cabecera:"
+
+#: ../../library/templates/socialTemplate.php:16
+msgid "Footer"
+msgstr "Pie de página:"
+
+#: ../../library/templates/socialTemplate.php:18
+msgid "Both"
+msgstr "Ambos"
+
+#: ../../library/templates/socialTemplate.php:69
+#: ../../library/templates/contactTemplate.php:70
+#: ../../library/templates/sliderPiecemakerTemplate.php:130
+#: ../../library/templates/sliderTemplate.php:52
+#: ../../library/templates/generalTemplate.php:148
+msgid "Save Changes"
+msgstr "Guardar Cambios"
+
+#: ../../library/templates/blogTemplate.php:3
+msgid "Blog settings"
+msgstr "Opciones del blog"
+
+#: ../../library/templates/blogTemplate.php:9
+msgid "Sidebar position"
+msgstr "Posición de la barra lateral"
+
+#: ../../library/templates/blogTemplate.php:36
+msgid "Meta data:<br/>( author, date etc. )"
+msgstr "Meta data:<br/>( autor, fecha, etc. )"
+
+#: ../../library/templates/blogTemplate.php:40
+msgid "Hide"
+msgstr "Ocultar"
+
+#: ../../library/templates/blogTemplate.php:42
+msgid "Show"
+msgstr "Mostrar"
+
+#: ../../library/templates/helpTemplate.php:7
+msgid "If you have any questions or problems, please read the documentation to find a solution or contact us, so that we could help you."
+msgstr ""
+
+#: ../../library/templates/helpTemplate.php:11
+#: ../../library/templates/helpTemplate.php:12
+msgid "Documentation"
+msgstr "Documentación"
+
+#: ../../library/templates/helpTemplate.php:14
+msgid "View documentation"
+msgstr "Ver Documentación"
+
+#: ../../library/templates/helpTemplate.php:15
+msgid "Everything you should know about your theme..."
+msgstr "Todo lo que debe saber acerca de su theme..."
+
+#: ../../library/templates/helpTemplate.php:20
+msgid "Contact us"
+msgstr "Contactenos"
+
+#: ../../library/templates/helpTemplate.php:21
+msgid "Contact us!"
+msgstr "¡Contactenos!"
+
+#: ../../library/templates/helpTemplate.php:23
+msgid "support@invent-themes.com"
+msgstr ""
+
+#: ../../library/templates/helpTemplate.php:24
+msgid "Just write an e-mail and we will contact you immediately!"
+msgstr "¡Solo escriba un email y lo contactaremos inmediatamente!"
+
+#: ../../library/templates/helpTemplate.php:29
+#: ../../library/templates/helpTemplate.php:30
+msgid "Visit our site"
+msgstr "Visite nuestro sitio"
+
+#: ../../library/templates/helpTemplate.php:32
+msgid "<a href=\"http://invent-themes.com\">Invent-themes.com</a>"
+msgstr "<a href=\"http://invent-themes.com\">Invent-themes.com</a>"
+
+#: ../../library/templates/helpTemplate.php:33
+msgid "Visit invent-themes.com and check out our other works."
+msgstr ""
+
+#: ../../library/templates/helpTemplate.php:38
+#: ../../library/templates/helpTemplate.php:44
+msgid "Import dummy data"
+msgstr ""
+
+#: ../../library/templates/helpTemplate.php:39
+msgid "So as to present all priceless possibilities of the Clear Theme we have prepared a demonstration content. These are articles, posts, static pages etc. which will help you to understand the main idea of how do our shortcodes work."
+msgstr ""
+
+#: ../../library/templates/helpTemplate.php:40
+msgid "ATTENTION:  The installation of the demonstration content on the website which has already articles, posts, etc. is not recommended. It can damage the website."
+msgstr ""
+
+#: ../../library/templates/contactTemplate.php:3
+msgid "Contact settings"
+msgstr ""
+
+#: ../../library/templates/contactTemplate.php:10
+msgid "E-mail address"
+msgstr ""
+
+#: ../../library/templates/contactTemplate.php:30
+msgid "Success message"
+msgstr ""
+
+#: ../../library/templates/contactTemplate.php:35
+msgid "Error message"
+msgstr ""
+
+#: ../../library/templates/contactTemplate.php:43
+#: ../../library/templates/contactTemplate.php:53
+msgid "Marker"
+msgstr ""
+
+#: ../../library/templates/contactTemplate.php:44
+msgid "Click on the map to create a new marker"
+msgstr ""
+
+#: ../../library/templates/contactTemplate.php:56
+#: ../../library/templates/sliderTemplate.php:26
+msgid "Title"
+msgstr ""
+
+#: ../../library/templates/contactTemplate.php:58
+msgid "Latitude"
+msgstr ""
+
+#: ../../library/templates/contactTemplate.php:60
+msgid "Longitude"
+msgstr ""
+
+#: ../../library/templates/contactTemplate.php:62
+msgid "Description"
+msgstr ""
+
+#: ../../library/templates/sliderPiecemakerTemplate.php:4
+msgid "Piecemaker Slider settings"
+msgstr ""
+
+#: ../../library/templates/sliderPiecemakerTemplate.php:8
+msgid "Easing type"
+msgstr ""
+
+#: ../../library/templates/sliderPiecemakerTemplate.php:33
+#: ../../library/templates/sliderNivoTemplate.php:32
+msgid "Transition time"
+msgstr ""
+
+#: ../../library/templates/sliderPiecemakerTemplate.php:44
+#: ../../library/templates/sliderNivoTemplate.php:43
+msgid "Pause time"
+msgstr ""
+
+#: ../../library/templates/sliderPiecemakerTemplate.php:73
+#: ../../library/templates/sliderNivoTemplate.php:125
+msgid "Number of slices"
+msgstr ""
+
+#: ../../library/templates/sliderPiecemakerTemplate.php:86
+msgid "Field of view"
+msgstr ""
+
+#: ../../library/templates/sliderPiecemakerTemplate.php:97
+msgid "Depth offset"
+msgstr ""
+
+#: ../../library/templates/sliderPiecemakerTemplate.php:108
+msgid "Cube distance"
+msgstr ""
+
+#: ../../library/templates/sliderPiecemakerTemplate.php:119
+msgid "Delay"
+msgstr ""
+
+#: ../../library/templates/sliderNivoTemplate.php:4
+msgid "Nivo Slider settings"
+msgstr ""
+
+#: ../../library/templates/sliderNivoTemplate.php:8
+msgid "Transition effects"
+msgstr ""
+
+#: ../../library/templates/sliderNivoTemplate.php:65
+msgid "Caption color"
+msgstr ""
+
+#: ../../library/templates/sliderNivoTemplate.php:78
+msgid "Control navigation"
+msgstr ""
+
+#: ../../library/templates/sliderNivoTemplate.php:85
+msgid "Direction navigation"
+msgstr ""
+
+#: ../../library/templates/sliderNivoTemplate.php:92
+msgid "Navigation arrows"
+msgstr ""
+
+#: ../../library/templates/sliderTemplate.php:5
+msgid "Slides"
+msgstr ""
+
+#: ../../library/templates/sliderTemplate.php:21
+msgid "Change image"
+msgstr ""
+
+#: ../../library/templates/sliderTemplate.php:27
+msgid "Link"
+msgstr ""
+
+#: ../../library/templates/sliderTemplate.php:30
+msgid "Slide background color"
+msgstr ""
+
+#: ../../library/templates/sliderTemplate.php:41
+msgid "Remove image from slider"
+msgstr ""
+
+#: ../../library/templates/sliderTemplate.php:55
+msgid "Add new slide"
+msgstr "Agregar nueva diapositiva"
+
+#: ../../library/templates/generalTemplate.php:2
+msgid "General settings"
+msgstr ""
+
+#: ../../library/templates/generalTemplate.php:9
+msgid "H1 Font"
+msgstr "H1, Fuente"
+
+#: ../../library/templates/generalTemplate.php:22
+msgid "H2 Font"
+msgstr "H2, Fuente"
+
+#: ../../library/templates/generalTemplate.php:35
+msgid "H3 Font"
+msgstr "H3, Fuente"
+
+#: ../../library/templates/generalTemplate.php:48
+msgid "H4 Font"
+msgstr "H4, Fuente"
+
+#: ../../library/templates/generalTemplate.php:61
+msgid "H5 Font"
+msgstr "H5, Fuente"
+
+#: ../../library/templates/generalTemplate.php:74
+msgid "H6 Font"
+msgstr "H6, Fuente"
+
+#: ../../library/templates/generalTemplate.php:87
+msgid "Top menu font size"
+msgstr ""
+
+#: ../../library/templates/generalTemplate.php:98
+msgid "Slider on home page"
+msgstr "Slider en la página principal"
+
+#: ../../library/templates/generalTemplate.php:102
+msgid "None"
+msgstr "Ninguno"
+
+#: ../../library/templates/generalTemplate.php:104
+msgid "Nivo"
+msgstr "Nivo"
+
+#: ../../library/templates/generalTemplate.php:106
+msgid "Piecemaker 2"
+msgstr "Piecemaker 2"
+
+#: ../../library/templates/generalTemplate.php:113
+msgid "Website style"
+msgstr "Estilo del sitio web"
+
+#: ../../library/templates/generalTemplate.php:117
+msgid "Wide"
+msgstr "Ancho"
+
+#: ../../library/templates/generalTemplate.php:119
+msgid "Narrow"
+msgstr "Angosto"
+
+#: ../../library/templates/generalTemplate.php:126
+msgid "Footer background color"
+msgstr "Color de fondo del pie de página"
+
+#: ../../library/templates/generalTemplate.php:136
+msgid "Copyright text"
+msgstr "Texto de Copyright"
+
+#: ../../library/templates/generalTemplate.php:140
+msgid "Gallery \"All\" category title"
+msgstr ""
+
+#: ../../library/templates/generalTemplate.php:144
+msgid "Google analytics"
+msgstr "Google analytics"
+
