@@ -13,7 +13,7 @@
 				<img src="<?php echo get_template_directory_uri() ?>/library/images/icons/help.png" alt="<?php _e('Documentation','invent') ?>" />
 				<h4><?php _e('Documentation','invent') ?></h4>
 				<div class="invent-description">
-					<p><a href="#"><?php _e('View documentation','invent') ?></a></p>
+					<p><a href="http://invent-themes.com/docs/clear-theme-en/"><?php _e('View documentation','invent') ?></a></p>
 					<p><?php _e('Everything you should know about your theme...','invent') ?></p>
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 					<input type="hidden" id="invent-import-dummy-data-url" value="<?php echo admin_url("admin-ajax.php"); ?>" />
 					<a href="#" class="invent-button invent-submit" style="margin:0 5px 20px 5px;" id="invent-import-dummy-data-button"><span class="invent-button-left"></span> <?php _e('Import dummy data','invent') ?></a>
 					<span id="invent-import-dummy-data-message">Dummy data have been imported</span>
-					<span id="invent-import-dummy-data-loading"><img src="<?php echo get_template_directory_uri() ?>/library/images/loading.gif" alt="Loading" />Please wait. Downloading images. It can take a few minutes...</span>
+					<span id="invent-import-dummy-data-loading"><img src="<?php echo get_template_directory_uri() ?>/library/images/loading.gif" alt="Loading" />Please wait. Downloading images. It can take a few minutes... [<span id="dummy-data-percent">0</span>%]</span>
 					</p>
 					<?php } else { ?>
 					<p style="color:red">

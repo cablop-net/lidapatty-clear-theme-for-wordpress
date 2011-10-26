@@ -2,7 +2,6 @@
 	filter: alpha(opacity=0);
 }
 
-
 body{
 	overflow:visible;
         height:100%;
@@ -34,8 +33,6 @@ hr.empty{
 	height:380px;
 }
 
-
-
 #piecemaker-wrapper{
 	width:960px;
 	margin:auto;
@@ -63,4 +60,10 @@ hr.empty{
 
 .next .arrow-right{
 	display:none;
+}
+
+
+#nav>li>a, #nav>li>a>span{
+	height: 26px;
+	cursor:pointer;
 }
