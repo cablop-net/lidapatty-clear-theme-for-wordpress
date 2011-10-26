@@ -1,0 +1,617 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-21 06:27+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../contactPage.php:13
+msgid "Name"
+msgstr ""
+
+#: ../contactPage.php:14 ../contactPage.php:17 ../contactPage.php:23
+msgid "This field is required."
+msgstr ""
+
+#: ../contactPage.php:16
+msgid "Your e-mail"
+msgstr ""
+
+#: ../contactPage.php:18
+msgid "Enter correct e-mail."
+msgstr ""
+
+#: ../contactPage.php:20
+msgid "Subject"
+msgstr ""
+
+#: ../contactPage.php:22
+msgid "Message"
+msgstr ""
+
+#: ../contactPage.php:24
+msgid "Submit"
+msgstr ""
+
+#: ../Invent/Admin.php:6 ../Invent/Ajax.php:6
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: ../Invent/globals.php:115
+msgid "Missing Attachment"
+msgstr ""
+
+#: ../Invent/globals.php:141
+msgid "Primary Navigation"
+msgstr ""
+
+#: ../Invent/globals.php:222
+msgid "Reply"
+msgstr ""
+
+#: ../Invent/globals.php:223
+msgid "Log in to Reply"
+msgstr ""
+
+#: ../Invent/globals.php:259
+msgid "Gallery items"
+msgstr ""
+
+#: ../Invent/globals.php:260
+msgid "Gallery item"
+msgstr ""
+
+#: ../Invent/globals.php:261
+msgid "Add new gallery item"
+msgstr ""
+
+#: ../Invent/globals.php:283
+msgid "Galleries"
+msgstr ""
+
+#: ../Invent/globals.php:284
+msgid "Gallery"
+msgstr ""
+
+#: ../Invent/globals.php:285
+msgid "Add gallery"
+msgstr ""
+
+#: ../Invent/globals.php:286
+msgid "All Galleries"
+msgstr ""
+
+#: ../Invent/Site.php:55
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: ../Invent/Site.php:58
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../Invent/Site.php:61 ../Invent/Site.php:78
+msgid "(Edit)"
+msgstr ""
+
+#: ../Invent/Site.php:78
+msgid "Pingback:"
+msgstr ""
+
+#: ../Invent/Site.php:111
+msgid "Next page"
+msgstr ""
+
+#: ../Invent/Site.php:112
+msgid "Previous page"
+msgstr ""
+
+#: ../Invent/Widgets.php:10
+msgid "The most recent tweets"
+msgstr ""
+
+#: ../Invent/Widgets.php:11 ../Invent/Widgets.php:19
+msgid "Twitter"
+msgstr ""
+
+#: ../Invent/Widgets.php:53 ../Invent/Widgets.php:141
+#: ../Invent/Widgets.php:248 ../Invent/Widgets.php:400
+msgid "Title:"
+msgstr ""
+
+#: ../Invent/Widgets.php:56 ../Invent/Widgets.php:144
+msgid "Number of comments to show:"
+msgstr ""
+
+#: ../Invent/Widgets.php:59
+msgid "User:"
+msgstr ""
+
+#: ../Invent/Widgets.php:73 ../Invent/Widgets.php:153
+msgid "The most recent comments"
+msgstr ""
+
+#: ../Invent/Widgets.php:74 ../Invent/Widgets.php:100
+#: ../Invent/Widgets.php:413
+msgid "Recent Comments"
+msgstr ""
+
+#: ../Invent/Widgets.php:154
+msgid "Flickr images"
+msgstr ""
+
+#: ../Invent/Widgets.php:177
+msgid "Flickr"
+msgstr ""
+
+#: ../Invent/Widgets.php:216
+msgid "Flickr gallery is empty"
+msgstr ""
+
+#: ../Invent/Widgets.php:219
+msgid "RSS URL not defined"
+msgstr ""
+
+#: ../Invent/Widgets.php:251
+msgid "RSS Url:"
+msgstr ""
+
+#: ../Invent/Widgets.php:254
+msgid "Number of photos to show:"
+msgstr ""
+
+#: ../Invent/Widgets.php:280
+msgid "Random Post Widget"
+msgstr ""
+
+#: ../Invent/Widgets.php:281
+msgid "Displays a random post image."
+msgstr ""
+
+#: ../Invent/Widgets.php:299
+msgid "Random Post"
+msgstr ""
+
+#: ../Invent/Widgets.php:370
+msgid "Widget Title"
+msgstr ""
+
+#: ../Invent/Widgets.php:372
+msgid ""
+"Select a Post Category to display images from, or All Categories to disable "
+"filtering"
+msgstr ""
+
+#: ../Invent/Widgets.php:373
+msgid "All Categories"
+msgstr ""
+
+#: ../Invent/Widgets.php:383
+msgid "The most popular posts"
+msgstr ""
+
+#: ../Invent/Widgets.php:384
+msgid "Popular posts"
+msgstr ""
+
+#: ../Invent/Widgets.php:403
+msgid "Number of posts to show:"
+msgstr ""
+
+#: ../Invent/Widgets.php:433
+msgid "No posts to display"
+msgstr ""
+
+#: ../Invent/Widgets.php:478 ../Invent/Widgets.php:480
+msgid "Sidebar widget area"
+msgstr ""
+
+#: ../Invent/Widgets.php:489
+msgid "First footer widget area"
+msgstr ""
+
+#: ../Invent/Widgets.php:491 ../Invent/Widgets.php:501
+#: ../Invent/Widgets.php:511 ../Invent/Widgets.php:521
+msgid "Footer widget area"
+msgstr ""
+
+#: ../Invent/Widgets.php:499
+msgid "Second footer widget area"
+msgstr ""
+
+#: ../Invent/Widgets.php:509
+msgid "Third footer widget area"
+msgstr ""
+
+#: ../Invent/Widgets.php:519
+msgid "Fourth footer widget area"
+msgstr ""
+
+#: ../plugins/twitter.php:101
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: ../plugins/twitter.php:103
+msgid "Y/m/d"
+msgstr ""
+
+#: ../plugins/twitter.php:105
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: ../plugins/twitter.php:252
+msgid "Twitter Widgets"
+msgstr ""
+
+#: ../plugins/twitter.php:253
+msgid "How many Twitter widgets would you like?"
+msgstr ""
+
+#: ../plugins/twitter.php:257
+msgid "Save"
+msgstr ""
+
+#: ../plugins/twitter.php:271
+#, php-format
+msgid "Twitter #%d"
+msgstr ""
+
+#: ../templates/blogTemplate.php:3
+msgid "Blog settings"
+msgstr ""
+
+#: ../templates/blogTemplate.php:9
+msgid "Sidebar position"
+msgstr ""
+
+#: ../templates/blogTemplate.php:36
+msgid "Meta data:<br/>( author, date etc. )"
+msgstr ""
+
+#: ../templates/blogTemplate.php:40
+msgid "Hide"
+msgstr ""
+
+#: ../templates/blogTemplate.php:42
+msgid "Show"
+msgstr ""
+
+#: ../templates/contactTemplate.php:3
+msgid "Contact settings"
+msgstr ""
+
+#: ../templates/contactTemplate.php:10
+msgid "E-mail address"
+msgstr ""
+
+#: ../templates/contactTemplate.php:30
+msgid "Success message"
+msgstr ""
+
+#: ../templates/contactTemplate.php:35
+msgid "Error message"
+msgstr ""
+
+#: ../templates/contactTemplate.php:43 ../templates/contactTemplate.php:53
+msgid "Marker"
+msgstr ""
+
+#: ../templates/contactTemplate.php:44
+msgid "Click on the map to create a new marker"
+msgstr ""
+
+#: ../templates/contactTemplate.php:56 ../templates/sliderTemplate.php:26
+msgid "Title"
+msgstr ""
+
+#: ../templates/contactTemplate.php:58
+msgid "Latitude"
+msgstr ""
+
+#: ../templates/contactTemplate.php:60
+msgid "Longitude"
+msgstr ""
+
+#: ../templates/contactTemplate.php:62
+msgid "Description"
+msgstr ""
+
+#: ../templates/contactTemplate.php:70 ../templates/generalTemplate.php:581
+#: ../templates/sliderPiecemakerTemplate.php:130
+#: ../templates/sliderTemplate.php:52 ../templates/socialTemplate.php:67
+msgid "Save Changes"
+msgstr ""
+
+#: ../templates/generalTemplate.php:2
+msgid "General settings"
+msgstr ""
+
+#: ../templates/generalTemplate.php:8
+msgid "H1 Font"
+msgstr ""
+
+#: ../templates/generalTemplate.php:27
+msgid "H2 Font"
+msgstr ""
+
+#: ../templates/generalTemplate.php:46
+msgid "H3 Font"
+msgstr ""
+
+#: ../templates/generalTemplate.php:65
+msgid "H4 Font"
+msgstr ""
+
+#: ../templates/generalTemplate.php:84
+msgid "H5 Font"
+msgstr ""
+
+#: ../templates/generalTemplate.php:103
+msgid "H6 Font"
+msgstr ""
+
+#: ../templates/generalTemplate.php:122
+msgid "Navigation color"
+msgstr ""
+
+#: ../templates/generalTemplate.php:180
+msgid "Heading font"
+msgstr ""
+
+#: ../templates/generalTemplate.php:383
+msgid "Google fonts"
+msgstr ""
+
+#: ../templates/generalTemplate.php:385 ../templates/generalTemplate.php:508
+msgid "None"
+msgstr ""
+
+#: ../templates/generalTemplate.php:427
+msgid "Top menu font"
+msgstr ""
+
+#: ../templates/generalTemplate.php:467
+msgid "Top menu font size"
+msgstr ""
+
+#: ../templates/generalTemplate.php:481
+msgid "Favicon"
+msgstr ""
+
+#: ../templates/generalTemplate.php:491 ../templates/generalTemplate.php:540
+msgid "Preview"
+msgstr ""
+
+#: ../templates/generalTemplate.php:504
+msgid "Slider on home page"
+msgstr ""
+
+#: ../templates/generalTemplate.php:510
+msgid "Nivo"
+msgstr ""
+
+#: ../templates/generalTemplate.php:512
+msgid "Piecemaker 2"
+msgstr ""
+
+#: ../templates/generalTemplate.php:520
+msgid "Website style"
+msgstr ""
+
+#: ../templates/generalTemplate.php:524
+msgid "Wide"
+msgstr ""
+
+#: ../templates/generalTemplate.php:526
+msgid "Narrow"
+msgstr ""
+
+#: ../templates/generalTemplate.php:534
+msgid "Logo"
+msgstr ""
+
+#: ../templates/generalTemplate.php:553
+msgid "Footer background color"
+msgstr ""
+
+#: ../templates/generalTemplate.php:566
+msgid "Copyright text"
+msgstr ""
+
+#: ../templates/generalTemplate.php:571
+msgid "Gallery \"All\" category title"
+msgstr ""
+
+#: ../templates/generalTemplate.php:576
+msgid "Google analytics"
+msgstr ""
+
+#: ../templates/helpTemplate.php:3
+msgid "Clear Theme"
+msgstr ""
+
+#: ../templates/helpTemplate.php:7
+msgid "Thank you for purchasing our theme!"
+msgstr ""
+
+#: ../templates/helpTemplate.php:9
+msgid ""
+"If you have any questions or problems, please read the documentation to find "
+"a solution or contact us, so that we could help you."
+msgstr ""
+
+#: ../templates/helpTemplate.php:13 ../templates/helpTemplate.php:14
+msgid "Documentation"
+msgstr ""
+
+#: ../templates/helpTemplate.php:16
+msgid "View documentation"
+msgstr ""
+
+#: ../templates/helpTemplate.php:17
+msgid "Everything you should know about your theme..."
+msgstr ""
+
+#: ../templates/helpTemplate.php:22
+msgid "Contact us"
+msgstr ""
+
+#: ../templates/helpTemplate.php:23
+msgid "Contact us!"
+msgstr ""
+
+#: ../templates/helpTemplate.php:25
+msgid "support@invent-themes.com"
+msgstr ""
+
+#: ../templates/helpTemplate.php:26
+msgid "Just write an e-mail and we will contact you immediately!"
+msgstr ""
+
+#: ../templates/helpTemplate.php:31 ../templates/helpTemplate.php:32
+msgid "Visit our site"
+msgstr ""
+
+#: ../templates/helpTemplate.php:34
+msgid "<a href=\"http://invent-themes.com\">Invent-themes.com</a>"
+msgstr ""
+
+#: ../templates/helpTemplate.php:35
+msgid "Visit invent-themes.com and check out our other works."
+msgstr ""
+
+#: ../templates/helpTemplate.php:40 ../templates/helpTemplate.php:46
+msgid "Import dummy data"
+msgstr ""
+
+#: ../templates/helpTemplate.php:41
+msgid ""
+"So as to present all priceless possibilities of the Clear Theme we have "
+"prepared a demonstration content. These are articles, posts, static pages "
+"etc. which will help you to understand the main idea of how do our "
+"shortcodes work."
+msgstr ""
+
+#: ../templates/helpTemplate.php:42
+msgid ""
+"ATTENTION:  The installation of the demonstration content on the website "
+"which has already articles, posts, etc. is not recommended. It can damage "
+"the website."
+msgstr ""
+
+#: ../templates/sliderNivoTemplate.php:4
+msgid "Nivo Slider settings"
+msgstr ""
+
+#: ../templates/sliderNivoTemplate.php:8
+msgid "Transition effects"
+msgstr ""
+
+#: ../templates/sliderNivoTemplate.php:32
+#: ../templates/sliderPiecemakerTemplate.php:33
+msgid "Transition time"
+msgstr ""
+
+#: ../templates/sliderNivoTemplate.php:43
+#: ../templates/sliderPiecemakerTemplate.php:44
+msgid "Pause time"
+msgstr ""
+
+#: ../templates/sliderNivoTemplate.php:65
+msgid "Caption color"
+msgstr ""
+
+#: ../templates/sliderNivoTemplate.php:78
+msgid "Control navigation"
+msgstr ""
+
+#: ../templates/sliderNivoTemplate.php:85
+msgid "Direction navigation"
+msgstr ""
+
+#: ../templates/sliderNivoTemplate.php:92
+msgid "Navigation arrows"
+msgstr ""
+
+#: ../templates/sliderNivoTemplate.php:125
+#: ../templates/sliderPiecemakerTemplate.php:73
+msgid "Number of slices"
+msgstr ""
+
+#: ../templates/sliderPiecemakerTemplate.php:4
+msgid "Piecemaker Slider settings"
+msgstr ""
+
+#: ../templates/sliderPiecemakerTemplate.php:8
+msgid "Easing type"
+msgstr ""
+
+#: ../templates/sliderPiecemakerTemplate.php:86
+msgid "Field of view"
+msgstr ""
+
+#: ../templates/sliderPiecemakerTemplate.php:97
+msgid "Depth offset"
+msgstr ""
+
+#: ../templates/sliderPiecemakerTemplate.php:108
+msgid "Cube distance"
+msgstr ""
+
+#: ../templates/sliderPiecemakerTemplate.php:119
+msgid "Delay"
+msgstr ""
+
+#: ../templates/sliderTemplate.php:5
+msgid "Slides"
+msgstr ""
+
+#: ../templates/sliderTemplate.php:21
+msgid "Change image"
+msgstr ""
+
+#: ../templates/sliderTemplate.php:27
+msgid "Link"
+msgstr ""
+
+#: ../templates/sliderTemplate.php:30
+msgid "Slide background color"
+msgstr ""
+
+#: ../templates/sliderTemplate.php:41
+msgid "Remove image from slider"
+msgstr ""
+
+#: ../templates/sliderTemplate.php:55
+msgid "Add new slide"
+msgstr ""
+
+#: ../templates/socialTemplate.php:3
+msgid "Social media settings"
+msgstr ""
+
+#: ../templates/socialTemplate.php:10
+msgid "Socials position"
+msgstr ""
+
+#: ../templates/socialTemplate.php:14
+msgid "Header"
+msgstr ""
+
+#: ../templates/socialTemplate.php:16
+msgid "Footer"
+msgstr ""
