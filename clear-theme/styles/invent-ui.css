@@ -1,0 +1,32 @@
+/* accordions and toggles */
+.acc-style1, .acc-style2 { margin:0 0 11px 0; }
+.acc-style1 h3 { text-shadow:#fff 0 1px 0px; font-size: 18px; background:#f2f2f2; height: 39px; margin:0px; padding: 0 0 0 15px; line-height: 39px; cursor:pointer; }
+.acc-style2 h3 { text-shadow:#fff 0 1px 0px; font-size: 18px; background:#e0e0e0; height: 39px; margin:0px; padding: 0 0 0 15px; line-height: 39px; cursor:pointer; color:#4f4f4f;}
+.acc-style1 h3:hover, .acc-style1 h3.selected { background:#e0e0e0; color: #4f4f4f; }
+.acc-style2 h3:hover, .acc-style2 h3.selected { background:#424242 url("../images/acc.png") repeat-x; color: #fff; text-shadow:#424242 0 1px 0px;}
+.acc-style1 .acc-content>div, .acc-style2 .acc-content>div { padding:14px; background:#fff }
+.acc-style1 .acc-content>div { border: #f2f2f2 1px solid; }
+.acc-style2 .acc-content>div { border: #e0e0e0 1px solid; }
+.invent-accordion .acc-content{display:none; height:0; margin:0; padding:0; border:0;}
+.invent-accordion .active{display:block; height:auto;}
+
+
+/* tabs */
+.invent-tabs { position: relative; padding: 0; zoom: 1; }/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+
+.invent-tabs>ul { height:40px; margin: 0; padding: 0; }
+.invent-tabs>ul li { padding: 0; margin: 0 1px 1px 0; list-style: none; float: left; position: relative; border-bottom: 0 !important; padding: 0; white-space: nowrap;}
+.invent-tabs>ul li a { float: left; text-decoration: none; }
+.invent-tabs>ul li a.current{ cursor: text; }
+.invent-tabs>ul li a { height: 39px; cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+
+.tab-style1, .tab-style2 { list-style:none; margin:0 0 10px 0; }
+.tab-style1 ul li a.current, .tab-style1 li a:hover{ background: #e0e0e0;}
+.tab-style2 ul li a.current, .tab-style2 li a:hover{ background:url("../images/acc.png") repeat-x; color: #fff; text-shadow:#424242 0 1px 0px;}
+.tab-style1 ul a { text-shadow:#fff 0 1px 0px;font-size: 18px; background:#f2f2f2; margin:0; padding: 0 15px 0 15px; line-height: 39px; cursor:pointer;}
+.tab-style2 ul a { color:#4f4f4f; text-shadow:#fff 0 1px 0px;font-size: 18px; background:#e0e0e0; margin:0px; padding: 0 15px 0 15px; line-height: 39px; cursor:pointer; }
+.tab-style1 .invent-panes { background: #fff; border: #f2f2f2 1px solid; padding: 14px 10px 4px 10px;}
+.tab-style2 .invent-panes { background: #fff; border: #e0e0e0 1px solid; padding: 14px 10px 4px 10px;}
+
+.invent-tabs .invent-panes{ position:relative; height:auto; padding-top:14px;}
+.invent-tabs .invent-panes>div{position:absolute; opacity:0; top:14px;}
