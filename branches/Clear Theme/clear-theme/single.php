@@ -8,8 +8,9 @@
 // 1 = left
 // 2 = right
 // 3 = no
-// $sidebarPosition = (int) get_post_meta(get_the_ID(), '_invent_sidebar_position', true);
-$sidebarPosition = (int) get_option('invent-blog-sidebar-position');
+$sidebarPosition = (int) get_post_meta(get_the_ID(), '_invent_sidebar_position', true);
+if($sidebarPosition==0) $sidebarPosition = (int) get_option('invent-blog-sidebar-position');
+if($sidebarPosition==0) $sidebarPosition = 2;
 
 if(isset($_GET['position'])){
 	if($_GET['position']=='left')
@@ -40,8 +41,10 @@ if($sidebarPosition == 1) { ?>
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 					<div><?php echo invent_get_the_post_thumbnail( get_the_ID(), $sidebarPosition==3 );?></div>
+
+					<?php if(get_option('invent-blog-show-metadata')) { ?>
 					<ul class="post-info">
-						<li class="post-info-time"><?php echo get_post_time('F j, Y') ?></li>
+						<li class="post-info-time"><?php echo get_post_time('F j, Y',false, null, true) ?></li>
 						<li class="post-info-category"><?php echo get_the_category_list( ', ' ) ?></li>
 						<li class="post-info-comments"><?php
 							$number = get_comments_number();
@@ -56,6 +59,7 @@ if($sidebarPosition == 1) { ?>
 						?></li>
 						<li class="post-info-tags"><?php echo get_the_tag_list('', ', ' ) ?></li>
 					</ul>
+					<?php } ?>
 
 					<div class="entry-content">
 						<?php the_content(); ?>
@@ -68,7 +72,7 @@ if($sidebarPosition == 1) { ?>
 				</div>
 				<!-- post content -->
 
-				<div id="comments">
+				<div id="comments" class="invent-form">
 					<?php comments_template( '', true ); ?>
 				</div>
 

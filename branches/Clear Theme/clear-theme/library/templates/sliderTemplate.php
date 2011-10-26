@@ -1,4 +1,8 @@
-	<h2><?php _e('Slides','invent') ?></h2>
+<?php
+$sliderLinks = get_option('invent-slider-links');
+$sliderTitles = get_option('invent-slider-titles');
+?>
+<h2><?php _e('Slides','invent') ?></h2>
 	<div class="invent-settings">
 		<div class="invent-settings-row">
 			<ul id="invent-slides">

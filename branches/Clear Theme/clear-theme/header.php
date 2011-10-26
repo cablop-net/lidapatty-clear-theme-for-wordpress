@@ -4,8 +4,8 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
- * @package WordPress
- * @subpackage Invent
+ * @package Invent
+ * @subpackage Clear Theme
  * @since Invent 1.0
  */
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -45,6 +45,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/styles/nivo-slider.css" media="screen" />
 	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/styles/superfish.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/styles/fancybox.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/styles/invent-ui.css" />
 
 	<!--[if IE]>
 	<link rel="stylesheet" type="text/css" href="styles/ie9.css"/>
@@ -76,16 +77,25 @@
 		h6{color: <?php echo get_option('invent-general-h6-color') ?>; font-size: <?php echo get_option('invent-general-h6') ?>px}
 		.nivo-caption{color: <?php echo get_option('invent-slider-caption-color') ?>;}
 		.narrow .wrapper, #widgets-container,#scrolltop-right, #scrolltop-container{background-color: <?php echo get_option('invent-footer-background-color') ?>;}
+
+		<?php $navType = (int) get_option('invent-nav-type'); if(!$navType) $navType = 1; ?>
+
+		.button, #nav>li>a, .button span, #nav>li>a span {
+			background-image: url('<?php echo get_template_directory_uri() ?>/images/nav/<?php echo $navType; ?>.png');
+		}
+
+		#nav>li>a{
+			font-size: <?php echo get_option('invent-general-nav-font-size'); ?>px;
+		}
 	</style>
-	
-	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.easing.1.3.js"></script>
-	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.tiptip.minified.js"></script>
-	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.scrollto.min.js"></script>
-	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/cufon.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/style.css" media="screen" />
+
+	<?php wp_head(); ?>
 
 		<?php
-			$font = get_option( 'invent-headingFont', 'andika-basic');
+			$font = get_option( 'invent-headingFont');
+			if($font) {
 				$fontsConfig = Array(
 					'andika-basic' =>'fontFamily: \'Andika\' ',
 					'bebas-neue' =>'fontFamily: \'Bebas Neue\'',
@@ -116,13 +126,86 @@
 	<script type="text/javascript">
 		var cufonFont = {<?php echo $fontsConfig[$font] ?>};
 	</script>
-	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery-ui-1.8.11.custom.min.js"></script>
+	<?php } else {
+		$font = get_option('invent-heading-font');
+		if(!empty($font)) {
+
+			$fontFamily = str_replace('+', ' ', $font);
+			if(false!==($p = strpos($fontFamily, ':')))
+				$fontFamily = substr($fontFamily, 0, $p);
+			?>
+	<link href='http://fonts.googleapis.com/css?family=<?php echo $font; ?>&v1' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		h1, h2, h3, h4, h5, h6{ font-family: '<?php echo $fontFamily ?>', arial, sans, serif; }
+	</style>
+
+			<?php
+		}
+	} ?>
+
+
+	<?php
+		$font = get_option('invent-nav-font');
+		
+		if(!empty($font)) {
+			if(strpos($font,'cufon-')!==false) {
+				$font = substr($font,6);
+
+				$fontsConfig = Array(
+					'andika-basic' =>'fontFamily: \'Andika\' ',
+					'bebas-neue' =>'fontFamily: \'Bebas Neue\'',
+					'comfortaa-thin' => 'fontFamily: \'Comfortaa\' , fontWeight:250',
+					'comfortaa-regular' => 'fontFamily: \'Comfortaa\' , fontWeight:400',
+					'diavlo-light' => 'fontFamily: \'Diavlo Light\'',
+					'diavlo-book' => 'fontFamily: \'Diavlo Book\'',
+					'droid-sans' => 'fontFamily: \'Droid Sans\'',
+					'fertigo-pro' => 'fontFamily: \'Fertigo Pro\'',
+					'inconsolata' => 'fontFamily: \'Inconsolata\'',
+					'josefin-sans-std' => 'fontFamily: \'Josefin Sans Std\'',
+					'lobster' => 'fontFamily: \'Lobster\'',
+					'molengo' => 'fontFamily: \'Molengo\'',
+					'museo-sans' => 'fontFamily: \'Museo Sans\'',
+					'sansation-light' => 'fontFamily: \'Sansation\', fontWeight:300',
+					'sansation-regular' => 'fontFamily: \'Sansation\', fontWeight:400',
+					'vegur-light' => 'fontFamily: \'Vegur\'',
+					'vollkorn' => 'fontFamily: \'Vollkorn Regular\'',
+					'yanone-thin' => 'fontFamily: \'Yanone Kaffeesatz\', fontWeight:250',
+					'yanone-regular' => 'fontFamily: \'Yanone Kaffeesatz\', fontWeight:400'
+				);
+				if(isset($fontsConfig[$font])) { ?>
+					<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/fonts/<?php echo $font ?>.js"></script>
+					<script type="text/javascript">
+					jQuery(function(){
+					Cufon.replace('#nav>.current_page_item>a', {<?php echo $fontsConfig[$font] ?>, hover: {color: '#fff'}});
+					Cufon.replace('#nav>li>a:not(.current_page_item)', {<?php echo $fontsConfig[$font] ?>, hover: {color: '#505050'}});
+					});</script>
+				<?php
+				}
+
+			} else {
+
+				$fontFamily = str_replace('+', ' ', $font);
+				if(false!==($p = strpos($fontFamily, ':')))
+					$fontFamily = substr($fontFamily, 0, $p);
+		?>
+		<link href='http://fonts.googleapis.com/css?family=<?php echo $font; ?>&v1' rel='stylesheet' type='text/css'>
+		<style type="text/css">
+			#nav>li>a{ font-family: '<?php echo $fontFamily ?>', arial, sans, serif; }
+			#nav>li>a li{ font-family: arial, sans, serif; }
+		</style>
+
+<?php
+			}
+		}
+?>
+	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.tools.min.js"></script>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/superfish.js"></script>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.quicksand.js"></script>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.mousewheel-3.0.4.pack.js"></script>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.fancybox-1.3.4.pack.js"></script>
 
-	<?php if(is_front_page() && get_option('invent-slider-type')) { ?>
+	<?php if((is_front_page() || 1 == (int) get_post_meta(get_the_ID(), '_invent_show_slider', true)) && get_option('invent-slider-type')) { ?>
 
 		<?php if(get_option('invent-slider-type')=='1') { ?>
 			<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.nivo.slider.js"></script>
@@ -171,17 +254,38 @@
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/map.js"></script>
 
-	<?php
+<?php
 
-		if ( is_singular() && get_option( 'thread_comments' ) )
-			wp_enqueue_script( 'comment-reply' );
+	if ( is_singular() && get_option( 'thread_comments' ) )
+		wp_enqueue_script( 'comment-reply' );
 
-		wp_head();
-	?>
-
+	if(get_option('invent-analytics'))
+		echo get_option('invent-analytics');
+?>
 </head>
 <body <?php body_class(); ?>>
 
+<?php if( get_option('invent-socials-position')=='header' || get_option('invent-socials-position')=='both' ) { ?>
+	<?php if(get_option('invent-general-wrapper-style') == 'narrow') { ?>
+
+		<div class="wrapper">
+			<div id="social-container">
+				<?php get_template_part('socials'); ?>
+				<br class="clear"/>
+			</div>
+		</div>
+
+	<?php } else { ?>
+
+		<div id="social-container">
+			<div class="wrapper">
+				<?php get_template_part('socials'); ?>
+				<br class="clear"/>
+			</div>
+		</div>
+	<?php } ?>
+<?php } ?>
+	
 	<div class="wrapper">
 		<h1 id="logo"><a href="<?php echo home_url( '/' ); ?>">
 				<?php if(get_option('invent-logo')) { ?>
@@ -195,7 +299,7 @@
 	</div>
 
 	<?php
-		if(is_front_page() && get_option('invent-slider-type')) {
+		if((is_front_page() || 1 == (int) get_post_meta(get_the_ID(), '_invent_show_slider', true)) && get_option('invent-slider-type')) {
 
 			if(get_option('invent-slider-type')=='1') {
 				$slides = get_option('invent-slider');

@@ -2,7 +2,73 @@
 class Invent_Shortcodes {
 
 	public $createdIcons = array();
+	private $includeMap = false;
 	
+	public function __construct(){
+			/** DYNAMIC ICONS * */
+			$this->icons(TEMPLATEPATH . '/images/icons/31x30');
+			$this->icons(TEMPLATEPATH . '/images/icons/14x14_white');
+
+//			remove_shortcode('gallery');
+			add_shortcode('code', array($this, 'code'));
+			add_shortcode('image', array($this, 'image'));
+			add_shortcode('gallery', array($this, 'gallery'));
+			add_shortcode('list', array($this, 'listElement'));
+			add_shortcode('one_half', array($this, 'column_1_2'));
+			add_shortcode('one_third', array($this, 'column_1_3'));
+			add_shortcode('two_third', array($this, 'column_2_3'));
+			add_shortcode('one_fourth', array($this, 'column_1_4'));
+			add_shortcode('three_fourth', array($this, 'column_3_4'));
+
+			add_shortcode('one_half_last', array($this, 'column_1_2_last'));
+			add_shortcode('one_third_last', array($this, 'column_1_3_last'));
+			add_shortcode('two_third_last', array($this, 'column_2_3_last'));
+			add_shortcode('one_fourth_last', array($this, 'column_1_4_last'));
+			add_shortcode('three_fourth_last', array($this, 'column_3_4_last'));
+
+			add_shortcode('button', array($this, 'button'));
+			add_shortcode('button_big', array($this, 'button_big'));
+			add_shortcode('button_small', array($this, 'button_small'));
+			add_shortcode('button_light', array($this, 'button_light'));
+
+			add_shortcode('highlight_red', array($this, 'highlight_red'));
+			add_shortcode('highlight_orange', array($this, 'highlight_orange'));
+			add_shortcode('highlight_blue', array($this, 'highlight_blue'));
+			add_shortcode('highlight_green', array($this, 'highlight_green'));
+			add_shortcode('highlight_gray', array($this, 'highlight_gray'));
+			add_shortcode('highlight_pink', array($this, 'highlight_pink'));
+			add_shortcode('highlight_yellow', array($this, 'highlight_yellow'));
+
+			add_shortcode('error_box', array($this, 'error_box'));
+			add_shortcode('message_box', array($this, 'message_box'));
+			add_shortcode('alert_box', array($this, 'alert_box'));
+			add_shortcode('success_box', array($this, 'success_box'));
+
+			add_shortcode('blockquote', array($this, 'blockquote'));
+
+			add_shortcode('contact_map', array($this, 'contact_map'));
+			add_shortcode('contact_form', array($this, 'contact_form'));
+
+			add_shortcode('dailymotion', array($this, 'dailymotion'));
+			add_shortcode('vimeo', array($this, 'vimeo'));
+			add_shortcode('youtube', array($this, 'youtube'));
+
+			add_shortcode('accordions', array($this, 'accordions'));
+			add_shortcode('accordion', array($this, 'accordion'));
+			add_shortcode('tabs', array($this, 'tabs'));
+			add_shortcode('tab', array($this, 'tab'));
+
+//			add_shortcode('carousel', array($this, 'carousel'));
+//			add_shortcode('carousel_item', array($this, 'carousel_item'));
+
+			add_shortcode('spacer10', array($this, 'spacer10'));
+			add_shortcode('spacer20', array($this, 'spacer20'));
+			add_shortcode('spacer30', array($this, 'spacer30'));
+
+			add_action('init', array($this, 'register_map'));
+			add_action('wp_footer', array($this, 'print_map'));
+	}
+
 	public function __call($name, $args) {
 		// icon_
 		$data = explode('|', $name);
@@ -160,9 +226,9 @@ class Invent_Shortcodes {
 			$attr['align'] = 'left';
 
 		if (empty($attr['url']))
-			return '<div class="' . $attr['align'] . ' mb15"><span class="button"><span>' . do_shortcode($content) . '</span></span></div><div class="clear"></div>';
+			return '<div class="' . $attr['align'] . ' mb15"><span class="invent-button"><span>' . do_shortcode($content) . '</span></span></div><div class="clear"></div>';
 		else
-			return '<div class="' . $attr['align'] . ' mb15"><a href="' . $attr['url'] . '" class="button"><span>' . do_shortcode($content) . '</span></a></div><div class="clear"></div>';
+			return '<div class="' . $attr['align'] . ' mb15"><a href="' . $attr['url'] . '" class="invent-button"><span>' . do_shortcode($content) . '</span></a></div><div class="clear"></div>';
 	}
 
 	public function button_big($attr, $content='') {
@@ -227,7 +293,7 @@ class Invent_Shortcodes {
 		$attr = shortcode_atts(array(
 			'width' => 700,
 			'height' => 400,
-			'video_id' => '',
+			'video_id' => ''
 		), $attr);
 
 		return '<object type="application/x-shockwave-flash" data="http://www.youtube.com/v/'.$attr['video_id'].'&hd=1" style="width:'.$attr['width'].'px;height:'.$attr['height'].'px"><param name="wmode" value="opaque"><param name="movie" value="http://www.youtube.com/v/'.$attr['video_id'].'&hd=1" /></object>';
@@ -239,7 +305,7 @@ class Invent_Shortcodes {
 		$attr = shortcode_atts(array(
 			'width' => 700,
 			'height' => 400,
-			'video_id' => '',
+			'video_id' => ''
 		), $attr);
 
 		return '<object width="'.$attr['width'].'" height="'.$attr['height'].'"><param name="allowfullscreen" value="true" /><param name="wmode" value="opaque"><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id='.$attr['video_id'].'&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id='.$attr['video_id'].'&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="'.$attr['width'].'" height="'.$attr['height'].'" wmode="transparent"></embed></object>';
@@ -251,13 +317,76 @@ class Invent_Shortcodes {
 		$attr = shortcode_atts(array(
 			'width' => 700,
 			'height' => 400,
-			'video_id' => '',
+			'video_id' => ''
 		), $attr);
 
 		return '<iframe frameborder="0" width="'.$attr['width'].'" height="'.$attr['height'].'" src="http://www.dailymotion.com/embed/video/'.$attr['video_id'].'?width=560&theme=default&foreground=%23F7FFFD&highlight=%23FFC300&background=%23171D1B&start=&animatedTitle=&iframe=1&additionalInfos=0&autoPlay=0&hideInfos=0"></iframe>';
 	}
 
 
+	function accordions($attr, $content='') {
+		$attr = shortcode_atts(array(
+			'style' => 'style1'
+		), $attr);
+
+		return '<div class="acc-'.$attr['style'].' invent-accordion">'.do_shortcode($content).'</div>';
+	}
+
+	function accordion($attr, $content='') {
+
+		$attr = shortcode_atts(array(
+			'title' => '',
+			'active' => false
+		), $attr);
+
+		return'
+		<h3>'.$attr['title'].'</h3>
+		<div class="acc-content'.($attr['active'] ? ' active' : '').'">
+			<div>
+			'.do_shortcode($content).'
+			</div>
+		</div>';
+	}
+
+	function tabs($attr, $content='') {
+		$attr = shortcode_atts(array(
+			'style' => 'style1'
+		), $attr);
+		$attr['style'] = 'style1';
+
+		$r = '<div class="tab-'.$attr['style'].' invent-tabs">';
+		$content = do_shortcode($content);
+
+		$matches = array();
+		preg_match_all("#\[invent\_tab\_title\_(\d+)\](.*?)\[/invent\_tab\_title\_\\1\]#", $content, $matches, PREG_SET_ORDER);
+		$content = preg_replace("#\[invent\_tab\_title\_(\d+)\](.*?)\[/invent\_tab\_title\_\\1\]#", '', $content);
+		if(!empty($matches)) {
+
+			$r .= '<ul>';
+			foreach($matches as $item) {
+				$r .= '<li><h5><a href="#invent-tab-'.$item[1].'">'.$item[2].'</a></h5></li>';
+			}
+
+			$r .= '</ul>';
+		}
+		else
+			return '';
+
+		return $r.'<div class="invent-panes">'.$content.'</div></div>';
+	}
+
+	function tab($attr, $content='') {
+		static $tabId = 0;
+		$tabId++;
+
+		$attr = shortcode_atts(array(
+			'title' => '',
+			'active' => false
+		), $attr);
+
+		return '[invent_tab_title_'.$tabId.']'.$attr['title'].'[/invent_tab_title_'.$tabId.']<div class="tab-content" id="invent-tab-'.$tabId.'">'.do_shortcode($content).'</div>';
+	}
+	
 	public function gallery($attr) {
 		global $post, $wp_locale;
 
@@ -276,7 +405,7 @@ class Invent_Shortcodes {
 				unset($attr['orderby']);
 		}
 
-		extract(shortcode_atts(array(
+		$attr = shortcode_atts(array(
 					'order' => 'ASC',
 					'orderby' => 'menu_order ID',
 					'id' => $post->ID,
@@ -286,9 +415,11 @@ class Invent_Shortcodes {
 					'columns' => 3,
 					'size' => 'thumbnail',
 					'include' => '',
-					'exclude' => ''
-						), $attr));
-
+					'exclude' => '',
+					'link' => 'yes'
+						), $attr);
+		extract($attr);
+		
 		$id = intval($id);
 		if ('RAND' == $order)
 			$orderby = 'none';
@@ -363,7 +494,7 @@ class Invent_Shortcodes {
 		$output .= apply_filters('gallery_style', '<ul id="' . $selector . '" class="portfolio-1-' . $columns . ' hidden">');
 
 		$splitter = '<ul id="gallery-splitter-' . $instance . '" class="gallery-splitter">';
-		$splitter .= '<li class="segment-0 selected-1"><a href="#" rel="all">All</a></li>';
+		$splitter .= '<li class="segment-0 selected-1"><a href="#" rel="all">'.get_option('invent-gallery-allCategoryTitle').'</a></li>';
 		$addSplitter = false;
 		$categories = Array();
 		$imagesCount = count($attachments);
@@ -371,7 +502,7 @@ class Invent_Shortcodes {
 		foreach ($attachments as $id => $attachment) {
 			$i++;
 			// $link = isset($attr['link']) && 'file' == $attr['link'] ? invent_get_attachment_link($id, $size, false, false, false, 'default-'.$instance) : invent_get_attachment_link($id, $size, true, false, false, 'default-'.$instance);
-			$link = invent_get_attachment_link($id, $size, false, false, false, 'default-' . $instance);
+			$link = invent_get_attachment_link($id, $size, false, false, false, 'default-' . $instance, $attr['link']!='no');
 
 			$c = explode(',', $attachment->post_excerpt);
 			foreach ($c as $category) {
@@ -403,9 +534,9 @@ class Invent_Shortcodes {
 		}
 
 
-		$output .= "
+		$output .= '
 
-				</ul>\n";
+				</ul>'."\n";
 
 		$splitter .='</ul><div class="clear"></div>';
 
@@ -419,31 +550,74 @@ class Invent_Shortcodes {
 		if (!isset($attr['align']) || $attr['align'] != 'right')
 			$attr['align'] = 'left';
 
-//			if(!empty($attr['id']))
-//				$attr['id']=0;
-//			else
-//				$attr['id']--;
+		if(empty($attr['size'])) $attr['size'] = 'small';
 
-		$attachments = get_children(array('post_parent' => $post->ID, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image'));
+		switch($attr['size'])
+		{
+			case 'one_fourth':
+			case 'small': // 1-4
+				$imageSize = 'invent-small';
+				break;
+			case 'one_third':
+			case 'medium': // 1-3
+				$imageSize = 'invent-medium';
+				break;
+			case 'large':
+			case 'two_third':
+				$imageSize = 'invent-large';
+				break;
+			case 'one_half':
+			case 'big': // 1-2
+				$imageSize = 'invent-big';
+				break;
+			case 'three_fourth':
+			case 'huge': // 3-4
+				$imageSize = 'invent-huge';
+				break;
+			case 'full': // 1-1
+				$imageSize = 'invent-full';
+				break;
+			default:
+				$imageSize = 'invent-small';
+		}
+		global $wpdb;
+		$imageId=$wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid = %s", $attr['src']));
 
-//			if($attr['id'] >= count($attachments)) {
-//				$attr['id'] = count($attachments)-1;
-//			}
-		foreach ($attachments as $attachment) {
-			if ($attr['src'] == $attachment->guid)
-				$imageId = $attachment->ID;
+		// dummy data hack
+		if(!$imageId && strpos($attr['src'], 'http://invent-themes.com/demo/clear-theme/')!==false) {
+			$attr['src']= substr($attr['src'], 42);
+			$imageId=$wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid LIKE %s", '%'.$attr['src']));
 		}
 
-		return '<span class="image-decorations image-' . $attr['align'] . '">' . invent_get_attachment_link($imageId, 'invent-small', false, false, false, 'image-' . $imageId) . '</span>';
+		if(isset($imageId))
+			return '<span class="image-decorations image-' . $attr['align'] . '">' . invent_get_attachment_link($imageId, $imageSize, false, false, false, 'image-' . $imageId) . '</span>';
+		else
+			return '<span class="image-decorations image-' . $attr['align'] . '"> <img src="'.$attr['src'].'" alt="" /> </span>';
+	}
+
+	public function register_map(){
+		wp_print_scripts('google-maps');
+		wp_print_scripts('google-map');
+	}
+
+	public function print_map(){
+		if($this->includeMap){
+			wp_print_scripts('google-maps');
+			wp_print_scripts('invent-map');
+		}
 	}
 
 	public function contact_map($attr) {
 		$lat = get_option('invent-markers-lat');
 		$lng = get_option('invent-markers-lng');
+		$this->includeMap = true;
 
 		$lat = (float) $lat[0];
 		$lng = (float) $lng[0];
 		if ($lat != 0 && $lng != 0) {
+			wp_register_script( 'google-maps', 'http://maps.google.com/maps/api/js?sensor=false',  array(), null, true);
+			wp_register_script( 'invent-map', get_template_directory_uri().'/js/map.js', array( 'jquery', 'google-maps' ), null, true );
+
 			return '<div id="map-canvas"></div>';
 		}
 		else

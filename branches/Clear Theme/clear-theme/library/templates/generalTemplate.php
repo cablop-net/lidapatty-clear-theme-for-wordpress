@@ -97,7 +97,7 @@
 						<br class="clear"/>
 
 					</div>
-				</div>
+			</div>
 
 			<div class="invent-settings-row">
 					<label><?php _e('H6 Font','invent') ?></label>
@@ -117,6 +117,33 @@
 
 					</div>
 				</div>
+
+		<div class="invent-settings-row">
+			<label><strong><?php _e('Navigation color','invent') ?></strong></label>
+
+			<?php $value = (int) get_option('invent-nav-type'); if(!$value) $value = 1; ?>
+
+			<div>
+
+				<table class="invent-fontstable">
+				<tr>
+					<?php $i=1; ?>
+					<?php while(file_exists(TEMPLATEPATH.'/images/nav/'.$i.'.png')) { ?>
+					<td>
+						<div class="invent-80x80-container"><input id="invent-nav-type<?php echo $i ?>" name="invent-nav-type" type="radio" value="<?php echo $i ?>" <?php echo ($value == $i ? ' checked="checked"' : '') ?>/>
+						<img src="<?php echo get_template_directory_uri() ?>/images/nav/<?php echo $i ?>p.jpg" alt="" /></div>
+					</td>
+					<?php
+						if($i%4==0) echo '</tr><tr>';
+						++$i;
+					 }
+					 ?>
+
+				</tr>
+				</table>
+
+			</div>
+		</div>
 
 
 			<!--div class="invent-settings-row">
@@ -151,6 +178,7 @@
 
 			<div class="invent-settings-row">
 				<label for="invent-headingFont"><?php _e('Heading font','invent') ?></label>
+
 					<div>
 						<table class="invent-fontstable" id="invent-fontstable">
 							<?php
@@ -175,9 +203,279 @@
 								$i++;
 							}
 							?>
+
+							<td colspan="2">
+<?php $googleFonts = Array(
+'Alconia',
+'Allan:bold',
+'Allerta',
+'Allerta+Stencil',
+'Amaranth',
+'Annie+Use+Your+Telescope',
+'Anonymous+Pro',
+'Anton',
+'Architects+Daughter',
+'Arimo',
+'Artifika',
+'Arvo',
+'Astloch',
+'Bangers',
+'Bentham',
+'Bevan',
+'Bigshot+One',
+'Brawler',
+'Buda:light',
+'Cabin',
+'Cabin+Sketch:bold',
+'Calligraffitti',
+'Candal',
+'Cantarell',
+'Cardo',
+'Carter+One',
+'Caudex',
+'Cedarville+Cursive',
+'Cherry+Cream+Soda',
+'Chewy',
+'Coda:800',
+'Coda+Caption:800',
+'Coming+Soon',
+'Corben:bold',
+'Cousine',
+'Crafty+Girls',
+'Crushed',
+'Cuprum',
+'Damion',
+'Dancing+Script',
+'Dawning+of+a+New+Day',
+'Didact+Gothic',
+'Droid+Sans',
+'Droid+Sans+Mono',
+'Droid+Serif',
+'EB+Garamond',
+'Expletus+Sans',
+'Fontdiner+Swanky',
+'Forum',
+'Francois+One',
+'Geo',
+'Goblin+One',
+'Goudy+Bookletter+1911',
+'Gravitas+One',
+'Gruppo',
+'Hammersmith+One',
+'Holtwood+One+SC',
+'Homemade+Apple',
+'IM+Fell+French+Canon',
+'Inconsolata',
+'Indie+Flower',
+'Irish+Grover',
+'Josefin+Sans',
+'Josefin+Slab',
+'Judson',
+'Jura',
+'Just+Another+Hand',
+'Just+Me+Again+Down+Here',
+'Kameron',
+'Kenia',
+'Kranky',
+'Kreon',
+'Kristi',
+'Lato',
+'League+Script',
+'Lekton',
+'Limelight',
+'Lobster',
+'Lobster+Two',
+'Lora',
+'Love+Ya+Like+A+Sister',
+'Loved+by+the+King',
+'Luckiest+Guy',
+'Maiden+Orange',
+'Mako',
+'Maven+Pro',
+'Meddon',
+'MedievalSharp',
+'Megrim',
+'Merriweather',
+'Metrophobic',
+'Michroma',
+'Miltonian',
+'Miltonian+Tattoo',
+'Molengo',
+'Monofett',
+'Mountains+of+Christmas',
+'Muli',
+'Neucha',
+'Neuton',
+'News+Cycle',
+'Nobile',
+'Nova+Square',
+'Nova+Round',
+'Nova+Script',
+'Nova+Cut',
+'Nova+Oval',
+'Nova+Slim',
+'Nova+Flat',
+'Nova+Mono',
+'OFL+Sorts+Mill+Goudy+TT',
+'Old+Standard+TT',
+'Open+Sans',
+'Orbitron',
+'Oswald',
+'Over+the+Rainbow',
+'PT+Sans',
+'PT+Sans+Caption',
+'PT+Sans+Narrow',
+'PT+Serif',
+'PT+Serif+Caption',
+'Pacifico',
+'Patrick+Hand',
+'Paytone+One',
+'Permanent+Marker',
+'Philosopher',
+'Play',
+'Playfair+Display',
+'Podkova',
+'Puritan',
+'Quattrocento',
+'Quattrocento+Sans',
+'Radley',
+'Raleway:100',
+'Redressed',
+'Reenie+Beanie',
+'Rock+Salt',
+'Rokkitt',
+'Ruslan+Display',
+'Schoolbell',
+'Shadows+Into+Light',
+'Shanti',
+'Sigmar+One',
+'Six+Caps',
+'Slackey',
+'Smythe',
+'Sniglet:800',
+'Special+Elite',
+'Stardos+Stencil',
+'Sue+Ellen+Francisco',
+'Sunshiney',
+'Swanky+and+Moo+Moo',
+'Syncopate',
+'Tangerine',
+'Tenor+Sans',
+'Terminal+Dosis+Light',
+'The+Girl+Next+Door',
+'Tinos',
+'Ubuntu',
+'Ultra',
+'UnifrakturCook:bold',
+'UnifrakturMaguntia',
+'Unkempt',
+'VT323',
+'Varela',
+'Vibur',
+'Vollkorn',
+'Waiting+for+the+Sunrise',
+'Wallpoet',
+'Walter+Turncoat',
+'Wire+One',
+'Yanone+Kaffeesatz',
+'Zeyada');
+?>
+<label for="invent-google-font" style="padding:5px 0 0 40px;"><?php _e('Google fonts', 'invent') ?></label>
+<select id="invent-google-font" name="invent-heading-font">
+	<option value="arial"><?php _e('None','invent'); ?></option>
+<?php foreach($googleFonts as $font) {
+	$fontFace = str_replace('+', ' ', $font);
+	if(false!==($p = strpos($fontFace, ':')))
+			$fontFace = substr($fontFace, 0, $p);
+
+echo '<option value="'.$font.'"'.($font == get_option('invent-heading-font') ? ' selected="selected"' : '').'>'.$fontFace.'</option>';
+
+}
+?>
+</select></td>
 						</table>
+
+
 					</div>
 				</div>
+
+<?php
+	$navFont = get_option('invent-nav-font');
+	$cufonFonts = Array(
+		'andika-basic' => 'Andika Basic',
+		'bebas-neue',
+		'comfortaa-regular',
+		'comfortaa-thin',
+		'diavlo-book',
+		'diavlo-light',
+		'droid-sans',
+		'fertigo-pro',
+		'inconsolata',
+		'josefin-sans-std',
+		'lobster',
+		'molengo',
+		'museo-sans',
+		'sansation-light' => 'Sansation Light',
+		'sansation-regular' => 'Sansation Regular',
+		'vegur-light' => 'Vegur Light',
+		'vollkorn' => 'Vollkorn',
+		'yanone-regular' => 'Yanone Kaffeesatz',
+		'yanone-thin' => 'Yanone Regular'
+	);
+?>
+			<div class="invent-settings-row">
+				<label for="invent-nav-font"><?php echo __('Top menu font','invent'); ?></label>
+				<div>
+					<select id="invent-nav-font" name="invent-nav-font">
+					<optgroup label="Cufon fonts">
+						<option value="cufon-andika-basic"<?php if($navFont=='cufon-andika-basic') echo ' selected="selected"'; ?>>Andika</option>
+						<option value="cufon-bebas-neue"<?php if($navFont=='cufon-bebas-neue') echo ' selected="selected"'; ?>>Bebas Neue</option>
+						<option value="cufon-comfortaa-thin"<?php if($navFont=='cufon-comfortaa-thin') echo ' selected="selected"'; ?>>Comfortaa</option>
+						<option value="cufon-comfortaa-regular"<?php if($navFont=='cufon-comfortaa-regular') echo ' selected="selected"'; ?>>Comfortaa</option>
+						<option value="cufon-diavlo-light"<?php if($navFont=='cufon-diavlo-light') echo ' selected="selected"'; ?>>Diavlo Light</option>
+						<option value="cufon-diavlo-book"<?php if($navFont=='cufon-diablo-book') echo ' selected="selected"'; ?>>Diavlo Book</option>
+						<option value="cufon-droid-sans"<?php if($navFont=='cufon-droid-sans') echo ' selected="selected"'; ?>>Droid Sans</option>
+						<option value="cufon-fertigo-pro"<?php if($navFont=='cufon-fertigo-pro') echo ' selected="selected"'; ?>>Fertigo Pro</option>
+						<option value="cufon-inconsolata"<?php if($navFont=='cufon-inconsolata') echo ' selected="selected"'; ?>>Inconsolata</option>
+						<option value="cufon-josefin-sans-std"<?php if($navFont=='cufon-josefin-sans-std') echo ' selected="selected"'; ?>>Josefin Sans Std</option>
+						<option value="cufon-lobster"<?php if($navFont=='cufon-lobster') echo ' selected="selected"'; ?>>Lobster</option>
+						<option value="cufon-molengo"<?php if($navFont=='cufon-molengo') echo ' selected="selected"'; ?>>Molengo</option>
+						<option value="cufon-museo-sans"<?php if($navFont=='cufon-museo-sans') echo ' selected="selected"'; ?>>Museo Sans</option>
+						<option value="cufon-sansation-light"<?php if($navFont=='cufon-sansation-light') echo ' selected="selected"'; ?>>Sansation</option>
+						<option value="cufon-sansation-regular"<?php if($navFont=='cufon-sansation-regular') echo ' selected="selected"'; ?>>Sansation</option>
+						<option value="cufon-vegur-light"<?php if($navFont=='cufon-vegur-light') echo ' selected="selected"'; ?>>Vegur</option>
+						<option value="cufon-vollkorn"<?php if($navFont=='cufon-vollkorn') echo ' selected="selected"'; ?>>Vollkorn Regular</option>
+						<option value="cufon-yanone-thin"<?php if($navFont=='cufon-yanone-thin') echo ' selected="selected"'; ?>>Yanone Kaffeesatz</option>
+						<option value="cufon-yanone-regular"<?php if($navFont=='cufon-yanone-regular') echo ' selected="selected"'; ?>>Yanone Regular</option>
+					</optgroup>
+					<optgroup label="Google fonts">
+					<?php foreach($googleFonts as $font) {
+						$fontFace = str_replace('+', ' ', $font);
+						if(false!==($p = strpos($fontFace, ':')))
+								$fontFace = substr($fontFace, 0, $p);
+
+					echo '<option value="'.$font.'"'.($font == $navFont ? ' selected="selected"' : '').'>'.$fontFace.'</option>';
+
+					}
+					?>
+					</optgroup>
+					</select>
+				</div>
+			</div>
+
+			<div class="invent-settings-row">
+					<label><?php _e('Top menu font size','invent') ?></label>
+					<div>
+						<div class="invent-slider-container left">
+							<div id="invent-g-nav-font-size" class="invent-slider"></div>
+							<div id="invent-g-nav-font-size-value" class="invent-slider-value"></div>
+						</div>
+						<input type="hidden" id="invent-general-nav-font-size" name="invent-general-nav-font-size" value="<?php echo format_to_edit(get_option('invent-general-nav-font-size')) ?>" />
+
+						<br class="clear"/>
+
+					</div>
+			</div>
 
 			<div class="invent-settings-row">
 					<label for="invent-favicon"><?php _e('Favicon','invent') ?></label>
@@ -267,6 +565,11 @@
 			<div class="invent-settings-row">
 				<label for="invent-copyrightText"><?php _e('Copyright text','invent') ?></label>
 				<div><input type="text" id="invent-copyrightText" name="invent-copyrightText" value="<?php echo format_to_edit( get_option( 'invent-copyrightText')) ?>" class="invent-input-text"/></div>
+			</div>
+
+			<div class="invent-settings-row">
+					<label for="invent-gallery-allCategoryTitle"><?php _e('Gallery "All" category title','invent') ?></label>
+					<div><input type="text" id="invent-gallery-allCategoryTitle" name="invent-gallery-allCategoryTitle" value="<?php echo format_to_edit( get_option( 'invent-gallery-allCategoryTitle')) ?>" class="invent-input-text"/></div>
 			</div>
 
 			<div class="invent-settings-row">

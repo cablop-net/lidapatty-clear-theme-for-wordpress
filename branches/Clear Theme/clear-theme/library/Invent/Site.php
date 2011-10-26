@@ -84,60 +84,23 @@ class Invent_Site {
 
 		public function __construct() {
 
-			  //It will be available in next themes
+			// javascript and css files
+			wp_deregister_script( 'jquery' );
+			wp_register_script( 'jquery', get_template_directory_uri().'/js/jquery-1.6.2.min.js', array(), '1.6.2');
+			wp_enqueue_script ('jquery' );
+
+			wp_enqueue_script( 'jquery-easing', get_template_directory_uri().'/js/jquery.easing.1.3.js', array( 'jquery' ), '1.3' );
+			wp_enqueue_script( 'jquery-tiptip', get_template_directory_uri().'/js/jquery.tiptip.minified.js', array( 'jquery' ), '1.3' );
+			wp_enqueue_script( 'jquery-scrollto', get_template_directory_uri().'/js/jquery.scrollto.min.js', array( 'jquery' ), '1.4.2' );
+			wp_enqueue_script( 'cufon', get_template_directory_uri().'/js/cufon.js', array(), '1.09i' );
+
+
+			//It will be available in next themes
 			add_custom_background(Array($this, 'customBackground'), '', '');
 			add_custom_image_header(Array($this, 'imageHeader'),Array($this, 'imageHeader'));
 			add_editor_style(Array($this, 'editorStyle'));
 
 			$shortcodes = new Invent_Shortcodes();
-
-			/** DYNAMIC ICONS * */
-			$shortcodes->icons(TEMPLATEPATH . '/images/icons/31x30');
-			$shortcodes->icons(TEMPLATEPATH . '/images/icons/14x14_white');
-
-//			remove_shortcode('gallery');
-			add_shortcode('code', array($shortcodes, 'code'));
-			add_shortcode('image', array($shortcodes, 'image'));
-			add_shortcode('gallery', array($shortcodes, 'gallery'));
-			add_shortcode('list', array($shortcodes, 'listElement'));
-			add_shortcode('one_half', array($shortcodes, 'column_1_2'));
-			add_shortcode('one_third', array($shortcodes, 'column_1_3'));
-			add_shortcode('two_third', array($shortcodes, 'column_2_3'));
-			add_shortcode('one_fourth', array($shortcodes, 'column_1_4'));
-			add_shortcode('three_fourth', array($shortcodes, 'column_3_4'));
-
-			add_shortcode('one_half_last', array($shortcodes, 'column_1_2_last'));
-			add_shortcode('one_third_last', array($shortcodes, 'column_1_3_last'));
-			add_shortcode('two_third_last', array($shortcodes, 'column_2_3_last'));
-			add_shortcode('one_fourth_last', array($shortcodes, 'column_1_4_last'));
-			add_shortcode('three_fourth_last', array($shortcodes, 'column_3_4_last'));
-
-			add_shortcode('button', array($shortcodes, 'button'));
-			add_shortcode('button_big', array($shortcodes, 'button_big'));
-			add_shortcode('button_small', array($shortcodes, 'button_small'));
-			add_shortcode('button_light', array($shortcodes, 'button_light'));
-
-			add_shortcode('highlight_red', array($shortcodes, 'highlight_red'));
-			add_shortcode('highlight_orange', array($shortcodes, 'highlight_orange'));
-			add_shortcode('highlight_blue', array($shortcodes, 'highlight_blue'));
-			add_shortcode('highlight_green', array($shortcodes, 'highlight_green'));
-			add_shortcode('highlight_gray', array($shortcodes, 'highlight_gray'));
-			add_shortcode('highlight_pink', array($shortcodes, 'highlight_pink'));
-			add_shortcode('highlight_yellow', array($shortcodes, 'highlight_yellow'));
-
-			add_shortcode('error_box', array($shortcodes, 'error_box'));
-			add_shortcode('message_box', array($shortcodes, 'message_box'));
-			add_shortcode('alert_box', array($shortcodes, 'alert_box'));
-			add_shortcode('success_box', array($shortcodes, 'success_box'));
-
-			add_shortcode('blockquote', array($shortcodes, 'blockquote'));
-
-			add_shortcode('contact_map', array($shortcodes, 'contact_map'));
-			add_shortcode('contact_form', array($shortcodes, 'contact_form'));
-
-			add_shortcode('dailymotion', array($shortcodes, 'dailymotion'));
-			add_shortcode('vimeo', array($shortcodes, 'vimeo'));
-			add_shortcode('youtube', array($shortcodes, 'youtube'));
 		}
 
 		function wp_link_pages($args = '') {

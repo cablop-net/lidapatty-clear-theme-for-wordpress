@@ -61,29 +61,50 @@ function portfolioAnimations(){
 	
 }
 
+function relative_time(time_value) {
+  var values = time_value.split(" ");
+  time_value = values[1] + " " + values[2] + ", " + values[5] + " " + values[3];
+  var parsed_date = Date.parse(time_value);
+  var mydate = new Date(parsed_date);
+  var month = 1+mydate.getMonth();
+  if(month<10) month = '0'+month;
+  var day = mydate.getDate();
+  if(day<10) day = '0'+day;
+  return mydate.getFullYear()+'-'+month+'-'+day;
+}
+
 jQuery(function($) {
 
 	if ( !$.browser.msie || $.browser.version != '6.0'){
-		$('#social li a,#scrolltop').tipTip({
+
+		$('#social-container a').tipTip({
+			defaultPosition: 'bottom',
+			edgeOffset: 5
+		});
+
+		$('#footer #social li a,#scrolltop').tipTip({
 			defaultPosition: 'top',
+			edgeOffset: 5
+		});
+
+		$('.tooltip').tipTip({
 			edgeOffset: 5
 		});
 	}
 
-		var cfg = cufonFont;
-		cfg.hover = true;
 
-		Cufon.replace('.entry-title a, .button-big-red,.button-big-blue,.button-big-green,.button-big-dark,.button-big-light2,.button-big-red2,.button-big-blue2,.button-big-green2,.button-big-dark2, .button-small-red,.button-small-blue,.button-small-green,.button-small-dark,.button-small-light2,.button-small-red2,.button-small-blue2,.button-small-green2,.button-small-dark2', cfg);
+		if(typeof(cufonFont)!='undefined') {
+			var cfg = cufonFont;
+			cfg.hover = true;
 
-		cufonFont.hover = false;
+			Cufon.replace('.entry-title a, .button-big-red,.button-big-blue,.button-big-green,.button-big-dark,.button-big-light2,.button-big-red2,.button-big-blue2,.button-big-green2,.button-big-dark2, .button-small-red,.button-small-blue,.button-small-green,.button-small-dark,.button-small-light2,.button-small-red2,.button-small-blue2,.button-small-green2,.button-small-dark2', cfg);
 
-		var headers = $('h1, h2, h3, h4, h5, h6').not('.portfolio-1-4 h3, .portfolio-1-3 h3, .portfolio-1-2 h3, .portfolio-1-1 h3');
-		Cufon.replace(headers, cufonFont);
+			cufonFont.hover = false;
 
-		Cufon.replace('#nav>.current_page_item>a', {fontFamily: cfg.fontFamily, hover: {color: '#fff'}});
-		Cufon.replace('#nav a:not(.current_page_item)', {fontFamily: cfg.fontFamily, hover: {color: '#505050'}});
+			var headers = $('h1, h2, h3, h4, h5, h6').not('.portfolio-1-4 h3, .portfolio-1-3 h3, .portfolio-1-2 h3, .portfolio-1-1 h3');
+			Cufon.replace(headers, cufonFont);
 
-
+		}
 
 	if(inventSliderConfig != false && (!$.browser.msie || $.browser.version != '6.0')){
 		// nivo slider
@@ -142,6 +163,8 @@ jQuery(function($) {
 			if($(this).height()>max) max = $(this).height();
 			if((i+1)%n==0) {
 				sum+=max;
+				if(n>1) sum+=20;
+
 				max = 0;
 				if(n==1) sum +=30; /* margin-bottom:30px; */
 			}
@@ -154,7 +177,7 @@ jQuery(function($) {
 			if($.browser.msie &&( parseInt($.browser.version)=='7.0' || parseInt($.browser.version)=='8.0')) {
 
 				var j = 0;
-				var m = 0;
+				var m = 1;
 				$('li',this).each(function(){
 					$(this).css('margin-left','20px');
 					if($(this).parent().hasClass('portfolio-1-2')) m = 2;
@@ -169,7 +192,7 @@ jQuery(function($) {
 			}
 	});
 	}
-	
+
 	/* sand box gallery */
 	var read_button = function(class_names) {
 		var r = {
@@ -329,10 +352,11 @@ jQuery(function($) {
 				$(this).css('display','none');
 
 				var p = $(this).parent();
-				if(!p.hasClass('image_decorations'))
+				if(!p.hasClass('image_decorations') && $('.hover'. p).length)
 					p = p.parent();
 
-				p.css({'height': $(this).height()+10+'px', 'width': $(this).width()+10+'px'});
+				if ( !$.browser.msie || $.browser.version == '9.0')
+					p.css({'height': $(this).height()+10+'px', 'width': $(this).width()+10+'px'});
 			}
 		});
 
@@ -341,21 +365,23 @@ jQuery(function($) {
 		var t=$('[class^="attachment"]').length;
 		var i=0;
 		var init=setInterval(function(){
-			var img = $('[class^="attachment"]').eq(i);
 
-                        if($.browser.safari){
-                            var tmp = new Image();
-                            tmp.src = img.attr('src');
-                            tmp.onload = function(){
-                                    img.fadeIn(600); /*.parent().parent().removeClass('hidden');*/
-                            }
-                        }
-                        else
-                            img.fadeIn(600);
-                        
-			i++;
+			if(i<t) {
+				var img = $('[class^="attachment"]').eq(i);
 
-			if(i==t){
+							if($.browser.safari){
+								var tmp = new Image();
+								tmp.src = img.attr('src');
+								tmp.onload = function(){
+										img.fadeIn(600); /*.parent().parent().removeClass('hidden');*/
+								}
+							}
+							else
+								img.fadeIn(600);
+
+				i++;
+			}
+			if(i>=t){
 				clearInterval(init);
 				delete init
 			}
@@ -429,9 +455,10 @@ $('#contact-form').submit(function(){
 
 	$('.code-container').hover(function(){
 		$('.code-container').not(this).stop().css({'position':'relative', 'z-index':0, 'width': 'auto'});
+		var h = $(this).height();
 
 		var w1 = $(this).width();
-		$(this).css({'position':'absolute', 'z-index':5});
+		$(this).css({'position':'absolute', 'z-index':5}).height(h);
 		var w2 = $(this).width()+5;
 
 		if(w2>w1+5){
@@ -441,8 +468,117 @@ $('#contact-form').submit(function(){
 		else
 			$(this).css({'position':'relative', 'z-index':0});
 	}, function(){
+		$('.code-container-tmp').remove();
 		$('.code-container').stop().css({'position':'relative', 'z-index':0, 'width': 'auto'});
 	});
 
 
+	/* accordions and toggles */
+		var config = {
+			container: '.invent-accordion', //.acc-style1, .acc-style2',
+			tab: '>h3',
+			content: '.acc-content'
+		}
+
+
+		$(config.container).each(function(){
+			var c = $(this);
+
+			$(config.tab,c).each(function(i){
+
+				$(this).click(function(){
+					
+					var d = $(config.content,c).eq(i);
+
+					if(d.height()>0){
+						var h = 0;
+
+					} else {
+						if(!d.is(':animated')) {
+							d.css('display','block');
+							d.height('auto');
+							var h = d.height();
+							d.height(0);
+						}
+					}
+
+					d.stop().animate({'height':h},'600', function(){
+						if($(this).height()==0)
+							$(this).css('display','none');
+					});
+				});
+
+			});
+
+		});
+
+		$.tools.tabs.addEffect("accSlide", function(tabIndex, done) {
+			var panes = this.getPanes();
+			var $$ = panes.eq(tabIndex);
+			var parentNode = $$.parent();
+			var h = $$.height();
+
+			if(parentNode.height()>h) {
+
+				panes.stop().animate({opacity:0},400);
+				$$.stop().animate({opacity:1}, 400, function(){
+					parentNode.stop().animate({height: h}, 400);
+				});
+			} else {
+				parentNode.stop().animate({height: h}, 400, function(){
+					panes.stop().animate({opacity:0},400);
+					$$.stop().animate({opacity:1}, 400);
+				});
+			}
+			done.call();
+		});
+
+		$(".invent-tabs").each(function(){
+			$('ul', this).tabs($('.invent-panes>div', this), {effect: 'accSlide', current: 'current'});
+		});
+
+		$('.twitter-data').each(function(){
+			var user = $('input[name="user"]',this).val();
+			var number = $('input[name="number"]',this).val();
+			var container = $(this).parent();
+			container.append($('<div></div>').html('Loading...'));
+			$(this).remove();
+			$.ajax({
+				url: 'http://twitter.com/statuses/user_timeline/'+user+'.json?count='+number,
+				method: 'get',
+				success: function(twitters){
+					$('div', container).remove();
+					var list = $('<ul></ul>').addClass('twitter-list');
+
+					for (var i=0; i<twitters.length; i++){
+						var username = twitters[i].user.screen_name;
+						var status = twitters[i].text.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function(url) {
+							return '<a href="'+url+'" class="twitter-link schemehovercolor">'+url+'</a>';
+						}).replace(/\B@([_a-z0-9]+)/ig, function(reply) {
+							return  reply.charAt(0)+'<a href="http://twitter.com/'+reply.substring(1)+'" class="twitter-link schemehovercolor">'+reply.substring(1)+'</a>';
+						});
+
+						status += '<span>'+relative_time(twitters[i].created_at)+'</span>';
+						list.append($('<li></li>')
+								.append($('<div></div>').html(status))
+								.append($('<div></div>').addClass('decorator')));
+					}
+
+					// cut long link names
+					$('a', list).each(function(){
+						var title = $(this).html().substr(0,20);
+						title += '...';
+						$(this).html(title);
+					});
+					container.append(list);
+				},
+				error: function(xhrObject, textStatus){
+					$('div', container).remove();
+					var message = $('<div></div>').html('Connection problem. Check twitter widget configuration...').hide().fadeIn();
+					container.append(message);
+				},
+				timeout: 30000,
+				dataType: "jsonp"
+			});
+		});
 });

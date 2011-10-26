@@ -540,9 +540,11 @@ class WP_Import extends WP_Importer {
 				$comment_post_ID = $post_id = $post_exists;
 			} else {
 				$post_parent = (int) $post['post_parent'];
-				if ( $post_parent ) {
+				//dummy data
+				if (0 && $post_parent ) {
 					// if we already know the parent, map it to the new local ID
-					if ( isset( $this->processed_posts[$post_parent] ) ) {
+
+					if (isset( $this->processed_posts[$post_parent] ) ) {
 						$post_parent = $this->processed_posts[$post_parent];
 					// otherwise record the parent for later
 					} else {
