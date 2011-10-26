@@ -1,7 +1,17 @@
 <?php get_header(); ?>
 
+	<?php
+		$disableTitle = 0;
+		$blogPageId = (int)get_option('page_for_posts');
+		if($blogPageId) {
+			$disableTitle = (int) get_post_meta($blogPageId, '_invent_disable_title', true);
+		}
+	?>
+
 <!--<div id="content" class="wrapper" role="main">-->
-	<h1 class="entry-title">Blog</h1>
+<?php if($disableTitle==0) { ?>
+	<h1 class="entry-title"><?php wp_title(''); ?></h1>
+<?php } ?>
 	<hr id="blog-hr" />
 		<?php
 		// 1 = left
@@ -64,8 +74,9 @@
 
 					<?php echo invent_get_the_post_thumbnail(get_the_ID(), $sidebarPosition==3); ?>
 
+					<?php if(get_option('invent-blog-show-metadata')) { ?>
 					<ul class="post-info">
-						<li class="post-info-time"><?php echo get_post_time('F j, Y') ?></li>
+						<li class="post-info-time"><?php echo get_post_time('F j, Y',false, null, true) ?></li>
 						<li class="post-info-category"><?php echo get_the_category_list( ', ' ) ?></li>
 						<li class="post-info-comments"><?php
 							$number = get_comments_number();
@@ -80,12 +91,13 @@
 						?></li>
 						<li class="post-info-tags"><?php echo get_the_tag_list('', ', ' ) ?></li>
 					</ul>
+					<?php } ?>
 
 					<div class="entry-content">
 						<?php the_content( '' ); ?>
 
 						
-						<p class="clear left post-read-more"> <a href="<?php the_permalink(); ?>" class="button"><span><?php _e('Read more...', 'invent') ?></span></a></p>
+						<p class="clear left post-read-more"> <a href="<?php the_permalink(); ?>" class="invent-button"><span><?php _e('Read more...', 'invent') ?></span></a></p>
 					</div>
 
 				</div><!-- #post-## -->

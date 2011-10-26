@@ -32,6 +32,20 @@
 			</div>
 		</div>
 
+		<div class="invent-settings-row">
+				<label><?php _e('Meta data:<br/>( author, date etc. )','invent') ?></label>
+				<div>
+					<table class="invent-table">
+						<tr>
+							<td><?php _e('Hide','invent') ?></td>
+							<td><div class="invent-radio"><div class="invent-input-onoff"></div><div class="invent-input-border"></div><input type="radio" value="0" name="invent-blog-show-metadata" <?php echo (get_option('invent-blog-show-metadata')=='0' ? ' checked="checked"' : '') ?> /></div></td>
+							<td><?php _e('Show','invent') ?></td>
+							<td><div class="invent-radio"><div class="invent-input-onoff"></div><div class="invent-input-border"></div><input type="radio" value="1" name="invent-blog-show-metadata" <?php echo (get_option('invent-blog-show-metadata')=='1' ? ' checked="checked"' : '') ?> /></div></td>
+						</tr>
+					</table>
+				</div>
+		</div>
+
 		<p class="submit">
 		<a href="#" class="invent-button invent-submit right"><span class="invent-button-left"></span><span class="invent-icon invent-icon-save"></span> Save Changes</a>
 		</p>

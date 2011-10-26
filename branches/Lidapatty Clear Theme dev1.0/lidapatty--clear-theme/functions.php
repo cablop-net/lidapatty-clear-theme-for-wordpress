@@ -9,9 +9,6 @@
 // some globals functions
 include 'library/Invent/globals.php';
 
-// twitter widget plugin
-include('library/plugins/twitter.php');
-
 require_once('library/Invent/Shortcodes.php');
 require_once('library/Invent/Upload.php');
 $u = new Invent_Upload();
@@ -22,6 +19,7 @@ $inventAjax = new Invent_Ajax();
 
 if (is_admin()) {
 	require_once('library/Invent/Admin.php');
+	require_once('library/Invent/Gallery.php');
 	$invent = new Invent_Admin;
 	$invent->init();
 } else {

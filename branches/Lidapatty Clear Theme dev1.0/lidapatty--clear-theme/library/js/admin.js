@@ -114,6 +114,48 @@
 
 	}
 
+
+function importDummyData(part){
+		var $ = jQuery;
+
+		$('#dummy-data-percent').html(part*5);
+		$.ajax({
+			type: 'POST',
+			url: $('#invent-import-dummy-data-url').val(),
+			data: {
+				action: 'invent-import-data',
+				part: part
+			},
+			success: function(respondData) {
+
+				respondData+='';
+				if(respondData.indexOf('Remote server did not respond')!=-1)
+					$('#invent-import-dummy-data-message').html('Remote server did not respond. Please try again later.').css('color','red').fadeIn();
+				else {
+					if(part==20)
+						$('#invent-import-dummy-data-loading').fadeOut(function(){
+							$('#invent-import-dummy-data-message').fadeIn();
+						});
+					else
+						importDummyData(++part);
+				}
+			},
+			error: function(xhrObject, textStatus) {
+
+				if(xhrObject.status==500)
+					var message = '500 Internal Server Error';
+				else
+					var message = 'Ops... Something went wrong(Error '+xhrObject.status+')';
+
+				$('#invent-import-dummy-data-loading').fadeOut(function(){
+					$('#invent-import-dummy-data-message').html(message).css('color','red').fadeIn();
+				});
+			},
+			dataType: 'text json'
+		});
+	}
+
+
 jQuery(document).ready(function($){
 
 	Cufon.replace('.invent-settings-row>label, .invent-help h3, .invent-help h4');
@@ -141,13 +183,13 @@ jQuery(document).ready(function($){
 	});
 
 	$('.invent-checkbox, .invent-radio, .invent-80x80-container').each(function(){
-		if($('input', this).attr('checked'))
+		if($('input', this).prop('checked'))
 			$(this).addClass('selected');
 	});
 
 	$('#invent-social-items .invent-checkbox').each(function(){
-		if(!$('input', this).attr('checked'))
-			$('.invent-input-text', $(this).parent()).attr('disabled', true).addClass('disabled');
+		if(!$('input', this).prop('checked'))
+			$('.invent-input-text', $(this).parent()).prop('disabled', true).addClass('disabled');
 	});
 
 
@@ -158,14 +200,14 @@ jQuery(document).ready(function($){
 			if(!$.browser.msie || $.browser.version=='9.0')
 				$('.invent-input-onoff', this).stop().animate({'background-position': '-40px 0'}, 300);
 			$(this).removeClass('selected');
-			$('input', this).attr('checked', false);
+			$('input', this).prop('checked', false);
 		}
 		else
 		{
 			if(!$.browser.msie || $.browser.version=='9.0')
 				$('.invent-input-onoff', this).stop().animate({'background-position': '0px 0px'}, 300);
 			$(this).addClass('selected');
-			$('input', this).attr('checked', true);
+			$('input', this).prop('checked', true);
 		}
 	});
 
@@ -173,11 +215,11 @@ jQuery(document).ready(function($){
 	$('#invent-social-items .invent-checkbox').click(function(){
 		if($(this).hasClass('selected'))
 		{
-			$('.invent-input-text', $(this).parent()).attr('disabled', false).removeClass('disabled');
+			$('.invent-input-text', $(this).parent()).prop('disabled', false).removeClass('disabled');
 		}
 		else
 		{
-			$('.invent-input-text', $(this).parent()).attr('disabled', true).addClass('disabled');
+			$('.invent-input-text', $(this).parent()).prop('disabled', true).addClass('disabled');
 		}
 	});
 
@@ -187,11 +229,11 @@ jQuery(document).ready(function($){
 			$(this).addClass('selected');
 
 			var name = $('input', this).attr('name');
-			var div = $('input[name='+name+']').not($('input',this)).parent();
+			var div = $('input[name="'+name+'"]').not($('input',this)).parent();
 
 			$(div).removeClass('selected');
 
-			$('input', this).attr('checked', true);
+			$('input', this).prop('checked', true);
 		}
 	});
 
@@ -205,12 +247,13 @@ jQuery(document).ready(function($){
 			$(container).addClass('selected');
 
 			var name = $('input', container).attr('name');
-			var div = $('input[name='+name+']').not($('input',container)).parent();
+			var div = $('input[name="'+name+'"]').not($('input',container)).parent();
+
 			if(!$.browser.msie || $.browser.version=='9.0')
 				$('.invent-input-onoff',div).stop().animate({'background-position': '-40px 0'}, 300);
-				div.removeClass('selected');
+			div.removeClass('selected');
 
-			$('input', container).attr('checked', true);
+			$('input', container).prop('checked', true);
 		}
 	});
 
@@ -233,6 +276,7 @@ jQuery(document).ready(function($){
 	initSlider('#invent-g-h4', '#invent-general-h4', 'px', 12, 48, 1);
 	initSlider('#invent-g-h5', '#invent-general-h5', 'px', 12, 48, 1);
 	initSlider('#invent-g-h6', '#invent-general-h6', 'px', 12, 48, 1);
+	initSlider('#invent-g-nav-font-size', '#invent-general-nav-font-size', 'px', 8, 16, 1);
 
 
 	initColorPicker('#invent-slider-caption-color','#invent-slider-caption-color-cpicker-preview','#invent-slider-caption-color-cpicker-preview');
@@ -256,37 +300,50 @@ jQuery(document).ready(function($){
 
 		$('#invent-import-dummy-data-loading').fadeIn();
 
-
-		$.ajax({
-			type: 'POST',
-			url: $('#invent-import-dummy-data-url').val(),
-			data: {
-				action: 'invent-import-data'
-			},
-			success: function(data) {
-				$('#invent-import-dummy-data-loading').fadeOut(function(){
-
-					if(data.indexOf('Remote server did not respond')!=-1)
-						$('#invent-import-dummy-data-message').html('Remote server did not respond. Please try again later.').css('color','red').fadeIn();
-					else
-						$('#invent-import-dummy-data-message').fadeIn();
-				});
-			},
-			error: function(xhrObject, textStatus) {
-
-				if(xhrObject.status==500)
-					var message = '500 Internal Server Error';
-				else
-					var message = 'Ops... Something went wrong(Error '+xhrObject.status+')';
-				
-				$('#invent-import-dummy-data-loading').fadeOut(function(){
-					$('#invent-import-dummy-data-message').html(message).css('color','red').fadeIn();
-				});
-			},
-			dataType: 'text json'
-		});
+		importDummyData(0);
 
 	});
+
+	/* general options - fonts, cufon vs google */
+	var div = $('input[name="invent-headingFont"]').parent();
+
+	div.click(function(){
+		$('#invent-google-font option').eq(0).prop('selected', true);
+	})
+	$('#invent-google-font').change(function(){
+		if($('option:selected', this).index()!=0) {
+			// uncheck all radioboxes
+			var radio = $('#invent-fontstable input:checked');
+			radio.prop('checked', false);
+
+			if(!$.browser.msie || $.browser.version=='9.0')
+				$('.invent-input-onoff',div).stop().animate({'background-position': '-40px 0'}, 300);
+			div.removeClass('selected');
+
+		}
+	});
+
+
+	$('.invent-image-upload').each(function(){
+
+		var container = this;
+		$('.invent-image-upload-button', this).click(function() {
+			formfield = $('.invent-image-upload-input', container);
+			tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
+			return false;
+		});
+
+		window.send_to_editor = function(html) {
+			imgurl = jQuery('img',html).attr('src');
+			$('.invent-image-upload-input', container).val(imgurl);
+			tb_remove();
+		}
+
+	});
+
+
+
+
 });
 
 

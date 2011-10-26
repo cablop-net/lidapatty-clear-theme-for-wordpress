@@ -7,6 +7,21 @@ class Invent_Admin {
 		}
 	}
 
+	public function updateMetaData($postId, $name, $value){
+		if(trim($value)) {
+			$oldValue = get_post_meta($postId, $name, true);
+
+			if(!$oldValue) {
+				add_post_meta($postId, $name, $value);
+			}
+			else
+				update_post_meta($postId, $name, $value);
+		} else {
+			delete_post_meta($postId, $name);
+		}
+
+	}
+	
 	public static function getThumbnailPath($file) {
 
 		$info = pathinfo($file);
@@ -18,8 +33,9 @@ class Invent_Admin {
 		wp_nonce_field('invent-custom-fields', 'invent-custom-fields_wpnonce', false, true);
 
 		$value = get_post_meta($post->ID, '_invent_sidebar_position', true);
+		if($value==0) $value = (int) get_option('invent-blog-sidebar-position');
 
-		echo '<p class="extra_0">Sidebar position:</p>
+		echo '<div class="invent-settings-row"><label>Sidebar position:</label>
 			<table class="invent-fontstable"><tr><td>
 			<!--label for="_invent_sidebar_position1">Left</label-->
 			<div class="invent-80x80-container"><input id="_invent_sidebar_position1" name="_invent_sidebar_position" type="radio" value="1" '.($value == 1 ? ' checked="checked"' : '').'/>
@@ -33,20 +49,46 @@ class Invent_Admin {
 			<div class="invent-80x80-container"><input id="_invent_sidebar_position3" name="_invent_sidebar_position" type="radio" value="3" '.($value == 3 ? ' checked="checked"' : '').'/>
 <img src="'.get_template_directory_uri().'/library/images/admin/sidebar/no.png" alt="left" /></div>
 </td></tr>
-			</table>';
+			</table></div>';
 	}
 
 	public function displayPageCustomFields() {
 		global $post;
 		wp_nonce_field('invent-custom-fields', 'invent-custom-fields_wpnonce', false, true);
 
+
 		$value = get_post_meta($post->ID, '_invent_disable_title', true);
+		$value2 = get_post_meta($post->ID, '_invent_show_slider', true);
 		echo '<div class="invent-settings-row">
 			<label>Hide page title</label>
 			<div>
 					<div class="invent-checkbox"><div class="invent-input-onoff"></div><div class="invent-input-border"></div><input type="checkbox" name="_invent_disable_title" '.($value==1 ? ' checked="checked"' : '').' /></div>
 			</div>
+		</div><div class="invent-settings-row">
+			<label>Show slider</label>
+			<div>
+					<div class="invent-checkbox"><div class="invent-input-onoff"></div><div class="invent-input-border"></div><input type="checkbox" name="_invent_show_slider" '.($value2==1 ? ' checked="checked"' : '').' /></div>
+			</div>
 		</div> ';
+
+		$value = (int) get_post_meta($post->ID, '_invent_sidebar_position', true);
+		if($value==0) $value = 3;
+
+		echo '<div class="invent-settings-row"><label>Sidebar position:</label>
+			<table class="invent-fontstable"><tr><td>
+			<!--label for="_invent_sidebar_position1">Left</label-->
+			<div class="invent-80x80-container"><input id="_invent_sidebar_position1" name="_invent_sidebar_position" type="radio" value="1" '.($value == 1 ? ' checked="checked"' : '').'/>
+			<img src="'.get_template_directory_uri().'/library/images/admin/sidebar/left.png" alt="left" /></div>
+			</td><td>
+			<!--label for="_invent_sidebar_position2">Right</label-->
+			<div class="invent-80x80-container"><input id="_invent_sidebar_position2" name="_invent_sidebar_position" type="radio" value="2" '.($value == 2 ? ' checked="checked"' : '').'/>
+<img src="'.get_template_directory_uri().'/library/images/admin/sidebar/right.png" alt="left" /></div>
+</td><td>
+			<!--label for="_invent_sidebar_position3">No-sidebar</label-->
+			<div class="invent-80x80-container"><input id="_invent_sidebar_position3" name="_invent_sidebar_position" type="radio" value="3" '.($value == 3 ? ' checked="checked"' : '').'/>
+<img src="'.get_template_directory_uri().'/library/images/admin/sidebar/no.png" alt="left" /></div>
+</td></tr>
+			</table></div>';
 	}
 
 	// saving post or page settings
@@ -87,7 +129,26 @@ class Invent_Admin {
 		} else {
 			delete_post_meta($post_id, '_invent_disable_title');
 		}
-}
+
+		if(isset($_POST['_invent_show_slider']) && trim($_POST['_invent_show_slider'])) {
+			$_POST['_invent_show_slider'] = $_POST['_invent_show_slider']=='on' ? 1 : 0; // it's on or off only
+
+			$oldValue = get_post_meta($post_id, '_invent_show_slider', true);
+
+			if(!$oldValue) {
+				add_post_meta($post_id, '_invent_show_slider', $_POST['_invent_show_slider']);
+			}
+			else
+				update_post_meta($post_id, '_invent_show_slider', $_POST['_invent_show_slider']);
+		} else {
+			delete_post_meta($post_id, '_invent_show_slider');
+		}
+
+		$value = isset($_POST['_invent_thumb']) ? $_POST['_invent_thumb'] : null;
+		$post_id = $post->post_parent;
+		$this->updateMetaData($post_id, '_invent_thumb', 'COKOLWIEK');
+
+	}
 
 
 
@@ -95,12 +156,42 @@ class Invent_Admin {
 		echo '<script type="text/javascript">var THEME_DIR = "'.  get_template_directory_uri().'/"</script>';
 	}
 
+	public function galleryImagesMetaBox(){
+		echo '
+		<div class="invent-settings-row">
+			<label>Short description</label>
+			<div>
+			<textarea id="content" class="invent-textarea"></textarea>
+			</div>
+		</div>
+		<div class="invent-settings-row">
+			<label>Full Image</label>
+			<div class="invent-image-upload">
+				<input type="text" name="_invent_image" class="invent-image-upload-input invent-input-text" />
+				<a href="#" class="invent-image-upload-button">Upload</a>
+			</div>
+		</div>
+		<div class="invent-settings-row">
+			<label>Thumbnail</label>
+			<div class="invent-image-upload">
+				<input type="text" name="_invent_thumb" class="invent-image-upload-input invent-input-text" />
+				<a href="#" class="invent-image-upload-button">Upload</a>
+			</div>
+		</div>';
+	}
+
 	public function initAdmin() {
 
+		$inventGallery = new Invent_Gallery();
+		
 		// Custom Fields
-//			add_meta_box('invent-custom-fields', 'Invent Custom Fields', array($this, 'displayPostCustomFields'), 'post', 'normal', 'high');
+		add_meta_box('invent-post-custom-fields', 'Invent Settings', array($this, 'displayPostCustomFields'), 'post', 'normal', 'high');
 		add_meta_box('invent-custom-fields', 'Invent Custom Fields', array($this, 'displayPageCustomFields'), 'page', 'normal', 'high');
 		add_action('save_post', array(&$this, 'savePostCustomFields'), 1, 2);
+
+		add_action('save_invent_gallery_item', array(&$inventGallery, 'saveGalleryItem'), 1);
+
+		add_meta_box('invent-gallery-images', 'Additional information', array($this, 'galleryImagesMetaBox'), 'invent_gallery_item', 'normal', 'high');
 
 		// Upload
 		wp_enqueue_script('ajaxupload', get_template_directory_uri().'/library/js/ajaxupload.js');
@@ -108,6 +199,8 @@ class Invent_Admin {
 		// Settings
 		register_setting('invent-general', 'invent-analytics');
 		register_setting('invent-general', 'invent-headingFont', 'wp_filter_nohtml_kses');
+		register_setting('invent-general', 'invent-heading-font');
+		register_setting('invent-general', 'invent-nav-font');
 		register_setting('invent-general', 'invent-logo');
 		register_setting('invent-general', 'invent-general-background');
 		register_setting('invent-general', 'invent-favicon');
@@ -127,10 +220,14 @@ class Invent_Admin {
 		register_setting('invent-general', 'invent-slider-type');
 		register_setting('invent-general', 'invent-general-wrapper-style');
 		register_setting('invent-general', 'invent-footer-background-color');
+		register_setting('invent-general', 'invent-nav-type');
+		register_setting('invent-general', 'invent-gallery-allCategoryTitle');
 
+		register_setting('invent-general', 'invent-general-nav-font-size');
 
 		register_setting('invent-social', 'invent-socials');
 		register_setting('invent-social', 'invent-socials-onoff');
+		register_setting('invent-social', 'invent-socials-position');
 
 		register_setting('invent-slider-nivo', 'invent-slider'); // images
 		register_setting('invent-slider-nivo', 'invent-slider-titles');
@@ -144,7 +241,6 @@ class Invent_Admin {
 		register_setting('invent-slider-nivo', 'invent-slider-control-navigation');
 		register_setting('invent-slider-nivo', 'invent-slider-direction-navigation');
 		register_setting('invent-slider-nivo', 'invent-slider-caption-color');
-
 
 		register_setting('invent-slider-piecemaker', 'invent-slider'); // images
 		register_setting('invent-slider-piecemaker', 'invent-slider-titles');
@@ -170,7 +266,7 @@ class Invent_Admin {
 		register_setting('invent-contact', 'invent-map-zoom');
 
 		register_setting('invent-blog', 'invent-blog-sidebar-position');
-
+		register_setting('invent-blog', 'invent-blog-show-metadata');
 
 		include('uploader.php');
 		add_action('admin_head', 'invent_ajaxupload');
@@ -178,29 +274,14 @@ class Invent_Admin {
 	}
 
 	public function initMenu() {
-
-		/*
-		add_menu_page('Invent theme help', 'Invent', 'administrator', 'invent', Array($this, 'helpPage'), get_template_directory_uri().'/library/images/invent.png', 25);
-		add_submenu_page('invent', 'General', 'General Settings', 'administrator', 'invent-general', Array($this, 'generalSettingsPage'));
-		add_submenu_page('invent', 'Blog', 'Blog Settings', 'administrator', 'invent-blog', Array($this, 'blogSettingsPage'));
-		add_submenu_page('invent', 'Sliders', 'Nivo Slider Settings', 'administrator', 'invent-slider-nivo', Array($this, 'sliderNivoSettingsPage'));
-		add_submenu_page('invent', 'Sliders', 'Piecemaker Settings', 'administrator', 'invent-slider-piecemaker', Array($this, 'sliderPiecemakerSettingsPage'));
-		add_submenu_page('invent', 'Social Media', 'Social Media Settings', 'administrator', 'invent-social', Array($this, 'socialSettingsPage'));
-		add_submenu_page('invent', 'Contact Settings', 'Contact Settings', 'administrator', 'invent-contact', Array($this, 'contactSettingsPage'));
-		 */
-
-		$f1 = 'add_menu_page';
-		$f2 = 'add_submenu_page';
-		// hack for theme check, we can't use add_theme_page because of tree structure of our option pages
-		$f1('Invent theme help', 'Invent', 'administrator', 'invent', Array($this, 'helpPage'), get_template_directory_uri().'/library/images/invent.png', 25);
-		$f2('invent', 'General', 'General Settings', 'administrator', 'invent-general', Array($this, 'generalSettingsPage'));
-		$f2('invent', 'Blog', 'Blog Settings', 'administrator', 'invent-blog', Array($this, 'blogSettingsPage'));
-		$f2('invent', 'Sliders', 'Nivo Slider Settings', 'administrator', 'invent-slider-nivo', Array($this, 'sliderNivoSettingsPage'));
-		$f2('invent', 'Sliders', 'Piecemaker Settings', 'administrator', 'invent-slider-piecemaker', Array($this, 'sliderPiecemakerSettingsPage'));
-		$f2('invent', 'Social Media', 'Social Media Settings', 'administrator', 'invent-social', Array($this, 'socialSettingsPage'));
-		$f2('invent', 'Contact Settings', 'Contact Settings', 'administrator', 'invent-contact', Array($this, 'contactSettingsPage'));
+		add_menu_page('Lidapatty Clear Theme', 'Lidapatty Clear Theme', 'editor', 'lidapatty-clearTheme', Array($this, 'helpPage'), get_template_directory_uri().'/library/images/invent.png', 25);
+		add_submenu_page('lidapatty-clearTheme', 'General', 'General Settings', 'administrator', 'invent-general', Array($this, 'generalSettingsPage'));
+		add_submenu_page('lidapatty-clearTheme', 'Blog', 'Blog Settings', 'administrator', 'invent-blog', Array($this, 'blogSettingsPage'));
+		add_submenu_page('lidapatty-clearTheme', 'Sliders', 'Nivo Slider Settings', 'editor', 'invent-slider-nivo', Array($this, 'sliderNivoSettingsPage'));
+		add_submenu_page('lidapatty-clearTheme', 'Sliders', 'Piecemaker Settings', 'editor', 'invent-slider-piecemaker', Array($this, 'sliderPiecemakerSettingsPage'));
+		add_submenu_page('lidapatty-clearTheme', 'Social Media', 'Social Media Settings', 'administrator', 'invent-social', Array($this, 'socialSettingsPage'));
+		add_submenu_page('lidapatty-clearTheme', 'Contact Settings', 'Contact Settings', 'administrator', 'invent-contact', Array($this, 'contactSettingsPage'));
 	}
-
 
 	public function init() {
 //			add_custom_background();
@@ -209,12 +290,25 @@ class Invent_Admin {
 
 		add_action('wp_ajax_invent_ajax_post_action', Array($this, 'ajaxUpload'));
 
+		wp_enqueue_script('media-upload');
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('thickbox');
+		wp_enqueue_style('thickbox');
+
 		wp_enqueue_style('admin.ui', get_template_directory_uri().'/library/css/ui-lightness/jquery-ui-1.8.7.css');
 		wp_enqueue_style('admin.css', get_template_directory_uri().'/library/css/admin.css');
 		wp_enqueue_style('colorpicker.css', get_template_directory_uri().'/library/css/colorpicker.css');
 
-		wp_enqueue_script('jquery.ui', get_template_directory_uri().'/library/js/jquery-ui-1.8.7.js');
+//		wp_deregister_script( 'jquery' );
+		wp_register_script( 'jquery-new', get_template_directory_uri().'/library/js/jquery-1.6.1.min.js', array(), '1.6.1');
+		wp_enqueue_script ('jquery-new' );
+
+		wp_enqueue_script('jquery.ui', get_template_directory_uri().'/library/js/jquery-ui-1.8.13.custom.min.js');
+		// jQuery 1.6.1 bugfix
+		wp_enqueue_script('jquery.backgroundPosition', get_template_directory_uri().'/library/js/jquery.backgroundPosition.js');
 		wp_enqueue_script('colorpicker.js', get_template_directory_uri().'/library/js/colorpicker.js');
+
+
 
 		wp_enqueue_script('cufon', get_template_directory_uri().'/library/js/cufon.js');
 		wp_enqueue_script('cufon-font', get_template_directory_uri().'/library/js/fonts/fertigo-pro.js');
@@ -254,12 +348,10 @@ class Invent_Admin {
 	}
 
 	public function sliderNivoSettingsPage() {
-		$this->checkPrivileges();
-
+//		$this->checkPrivileges();
 		$slides = get_option('invent-slider');
 		$sliderTitles = get_option('invent-slider-titles');
 		$sliderBgcolors = get_option('invent-slider-bgcolors');
-
 		include(TEMPLATEPATH.'/library/templates/sliderNivoTemplate.php');
 	}
 

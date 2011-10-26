@@ -6,6 +6,23 @@
 
 		<?php settings_fields('invent-social'); ?>
 
+		<div class="invent-settings-row">
+			<label><?php _e('Socials position','invent') ?></label>
+			<div>
+				<table class="invent-table">
+					<tr>
+						<td><?php _e('Header','invent') ?></td>
+						<td><div class="invent-radio"><div class="invent-input-onoff"></div><div class="invent-input-border"></div><input type="radio" value="header" name="invent-socials-position" <?php echo (get_option('invent-socials-position')=='header' ? ' checked="checked"' : '') ?> /></div></td>
+						<td><?php _e('Footer','invent') ?></td>
+						<td><div class="invent-radio"><div class="invent-input-onoff"></div><div class="invent-input-border"></div><input type="radio" value="footer" name="invent-socials-position" <?php echo (get_option('invent-socials-position')=='footer' ? ' checked="checked"' : '') ?> /></div></td>
+						<td><?php _e('Both','invent') ?></td>
+						<td><div class="invent-radio"><div class="invent-input-onoff"></div><div class="invent-input-border"></div><input type="radio" value="both" name="invent-socials-position" <?php echo (get_option('invent-socials-position')=='both' ? ' checked="checked"' : '') ?> /></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+
 		<?php
 		$socialData = get_option('invent-socials');
 		$socialOnOff = get_option('invent-socials-onoff');
