@@ -291,3 +291,6 @@
 		<?php } ?>
 	<?php } ?>
 
+	<div id="wp-content-slideshow-wrapper">
+		<?php include (ABSPATH . '/wp-content/plugins/wp-content-slideshow/content-slideshow.php');?>
+	</div>
