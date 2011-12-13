@@ -290,7 +290,8 @@
     </script>
 		<?php } ?>
 	<?php } ?>
-
+	<?php if(is_front_page()): ?>
 	<div id="wp-content-slideshow-wrapper">
 		<?php include (ABSPATH . '/wp-content/plugins/wp-content-slideshow/content-slideshow.php');?>
 	</div>
+	<?php endif; ?>

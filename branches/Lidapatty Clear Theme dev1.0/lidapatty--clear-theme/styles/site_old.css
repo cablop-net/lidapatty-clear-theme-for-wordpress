@@ -1,3 +1,5 @@
+/* @override http://localhost/~manolo/probando-wp3/wp-content/themes/lidapatty--clear-theme-assembla/styles/site_old.css */
+
 html, body {
 	font-family: Tahoma, Geneva, "MS Sans Serif", sans-serif;
 }
@@ -1863,3 +1865,24 @@ img.alignleft {
 	border: 1px solid #d9d9d9;
 	background: #f7f7f7;
 }
+
+/* @group home slider */
+#content-slideshow{
+	margin: 0 auto;
+}
+
+div#wp-content-slideshow-wrapper div.slideme{
+	width: 100%;
+	text-align: center;
+}
+
+div#wp-content-slideshow-wrapper div.slideme a{
+	margin-left: 885px;
+}
+
+div#wp-content-slideshow-wrapper p{
+	margin: 0;
+}
+
+/* @end */
+
