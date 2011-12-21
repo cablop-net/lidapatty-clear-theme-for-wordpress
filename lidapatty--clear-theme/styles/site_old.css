@@ -1884,5 +1884,9 @@ div#wp-content-slideshow-wrapper p{
 	margin: 0;
 }
 
+#content-slideshow div.content_slideshow li{
+	cursor: pointer;
+}
+
 /* @end */
 
