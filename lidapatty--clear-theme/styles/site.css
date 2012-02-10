@@ -74,3 +74,11 @@ h1#logo {
 #social.nojs a:hover {
 	margin-top: -5px;
 }
+
+.search_button {
+	background-color: #FFFFFF;
+	border: none;
+	font-family: 'Comfortaa Regular',arial,sans,serif;
+	font-size: 12px;
+	padding: 0;
+}
