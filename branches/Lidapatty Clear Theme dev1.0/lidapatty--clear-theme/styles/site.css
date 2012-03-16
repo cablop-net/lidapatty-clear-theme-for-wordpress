@@ -82,3 +82,8 @@ h1#logo {
 	font-size: 12px;
 	padding: 0;
 }
+
+/* Workarounds */
+span.wpcf7-list-item {
+	display: block;
+}
