@@ -89,10 +89,11 @@ class Invent_Site {
 			wp_register_script( 'jquery', get_template_directory_uri().'/js/jquery-1.6.2.min.js', array(), '1.6.2');
 			wp_enqueue_script ('jquery' );
 
-			wp_enqueue_script( 'jquery-easing', get_template_directory_uri().'/js/jquery.easing.1.3.js', array( 'jquery' ), '1.3' );
-			wp_enqueue_script( 'jquery-tiptip', get_template_directory_uri().'/js/jquery.tiptip.minified.js', array( 'jquery' ), '1.3' );
-			wp_enqueue_script( 'jquery-scrollto', get_template_directory_uri().'/js/jquery.scrollto.min.js', array( 'jquery' ), '1.4.2' );
-			wp_enqueue_script( 'cufon', get_template_directory_uri().'/js/cufon.js', array(), '1.09i' );
+			wp_enqueue_script( 'jquery-invent-scripts', get_template_directory_uri().'/js/jquery.external.js', array( 'jquery' ), '1.0' );
+//			wp_enqueue_script( 'jquery-easing', get_template_directory_uri().'/js/jquery.easing.1.3.js', array( 'jquery' ), '1.3' );
+//			wp_enqueue_script( 'jquery-tiptip', get_template_directory_uri().'/js/jquery.tiptip.minified.js', array( 'jquery' ), '1.3' );
+//			wp_enqueue_script( 'jquery-scrollto', get_template_directory_uri().'/js/jquery.scrollto.min.js', array( 'jquery' ), '1.4.2' );
+//			wp_enqueue_script( 'cufon', get_template_directory_uri().'/js/cufon.js', array(), '1.09i' );
 
 
 			//It will be available in next themes

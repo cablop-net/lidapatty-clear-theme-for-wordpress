@@ -107,7 +107,7 @@ class Invent_Shortcodes {
 	public function listElement($attr, $content='') {
 
 		if (!empty($attr['type']))
-			$content = str_replace('<ul', '<ul class="' . $attr['type'] . '"', do_shortcode($content));
+			$content = str_replace('<ul', '<ul class="' . $attr['type'] . ' invent-list"', do_shortcode($content));
 		return $content;
 	}
 
@@ -296,7 +296,7 @@ class Invent_Shortcodes {
 			'video_id' => ''
 		), $attr);
 
-		return '<object type="application/x-shockwave-flash" data="http://www.youtube.com/v/'.$attr['video_id'].'&hd=1" style="width:'.$attr['width'].'px;height:'.$attr['height'].'px"><param name="wmode" value="opaque"><param name="movie" value="http://www.youtube.com/v/'.$attr['video_id'].'&hd=1" /></object>';
+		return '<div class="invent-video-container"><object type="application/x-shockwave-flash" data="http://www.youtube.com/v/'.$attr['video_id'].'&hd=1" style="width:'.$attr['width'].'px;height:'.$attr['height'].'px"><param name="wmode" value="opaque"><param name="movie" value="http://www.youtube.com/v/'.$attr['video_id'].'&hd=1" /></object></div>';
 	}
 
 
@@ -308,7 +308,7 @@ class Invent_Shortcodes {
 			'video_id' => ''
 		), $attr);
 
-		return '<object width="'.$attr['width'].'" height="'.$attr['height'].'"><param name="allowfullscreen" value="true" /><param name="wmode" value="opaque"><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id='.$attr['video_id'].'&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id='.$attr['video_id'].'&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="'.$attr['width'].'" height="'.$attr['height'].'" wmode="transparent"></embed></object>';
+		return '<div class="invent-video-container"><object width="'.$attr['width'].'" height="'.$attr['height'].'"><param name="allowfullscreen" value="true" /><param name="wmode" value="opaque"><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id='.$attr['video_id'].'&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id='.$attr['video_id'].'&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="'.$attr['width'].'" height="'.$attr['height'].'" wmode="transparent"></embed></object></div>';
 	}
 
 
@@ -320,7 +320,7 @@ class Invent_Shortcodes {
 			'video_id' => ''
 		), $attr);
 
-		return '<iframe frameborder="0" width="'.$attr['width'].'" height="'.$attr['height'].'" src="http://www.dailymotion.com/embed/video/'.$attr['video_id'].'?width=560&theme=default&foreground=%23F7FFFD&highlight=%23FFC300&background=%23171D1B&start=&animatedTitle=&iframe=1&additionalInfos=0&autoPlay=0&hideInfos=0"></iframe>';
+		return '<div class="invent-video-container"><iframe frameborder="0" width="'.$attr['width'].'" height="'.$attr['height'].'" src="http://www.dailymotion.com/embed/video/'.$attr['video_id'].'?width=560&theme=default&foreground=%23F7FFFD&highlight=%23FFC300&background=%23171D1B&start=&animatedTitle=&iframe=1&additionalInfos=0&autoPlay=0&hideInfos=0"></iframe></div>';
 	}
 
 
@@ -416,10 +416,11 @@ class Invent_Shortcodes {
 					'size' => 'thumbnail',
 					'include' => '',
 					'exclude' => '',
+					'title' => '',
 					'link' => 'yes'
-						), $attr);
+				), $attr);
+
 		extract($attr);
-		
 		$id = intval($id);
 		if ('RAND' == $order)
 			$orderby = 'none';
@@ -547,8 +548,10 @@ class Invent_Shortcodes {
 	public function image($attr) {
 		global $post;
 
-		if (!isset($attr['align']) || $attr['align'] != 'right')
-			$attr['align'] = 'left';
+		if (!isset($attr['align']))
+			$attr['align'] = 'no-align';
+			//|| $attr['align'] != 'right')
+			//$attr['align'] = 'left';
 
 		if(empty($attr['size'])) $attr['size'] = 'small';
 
@@ -590,7 +593,7 @@ class Invent_Shortcodes {
 		}
 
 		if(isset($imageId))
-			return '<span class="image-decorations image-' . $attr['align'] . '">' . invent_get_attachment_link($imageId, $imageSize, false, false, false, 'image-' . $imageId) . '</span>';
+			return '<span class="image-decorations image-' . $attr['align'] . '">' . invent_get_attachment_link($imageId, $imageSize, false, false, false, 'image-' . $imageId, true, isset($attr['url']) ? $attr['url'] : null) . '</span>';
 		else
 			return '<span class="image-decorations image-' . $attr['align'] . '"> <img src="'.$attr['src'].'" alt="" /> </span>';
 	}

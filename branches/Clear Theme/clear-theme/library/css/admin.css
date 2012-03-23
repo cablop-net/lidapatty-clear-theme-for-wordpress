@@ -537,6 +537,7 @@ margin-left:-120px;
 
 #invent-social-items label{
 	cursor: default;
+	height:24px;
 }
 #invent-social-items .invent-settings-row .invent-handler{
 	width:28px;
@@ -626,6 +627,31 @@ margin-left:-120px;
 
 #invent-rss-label{
 	background: url('../images/admin/social/rss.png') 0 1px no-repeat;
+	padding-left:30px;
+}
+
+#invent-dribbble-label{
+	background: url('../images/admin/social/dribbble.png') 0 1px no-repeat;
+	padding-left:30px;
+}
+
+#invent-behance-label{
+	background: url('../images/admin/social/behance.png') 0 1px no-repeat;
+	padding-left:30px;
+}
+
+#invent-envato-label{
+	background: url('../images/admin/social/envato.png') 0 1px no-repeat;
+	padding-left:30px;
+}
+
+#invent-forrst-label{
+	background: url('../images/admin/social/forrst.png') 0 1px no-repeat;
+	padding-left:30px;
+}
+
+#invent-google-label{
+	background: url('../images/admin/social/google.png') 0 1px no-repeat;
 	padding-left:30px;
 }
 
@@ -767,4 +793,50 @@ margin-left:-120px;
 }
 #invent-import-dummy-data-loading img{
 	margin-right:10px;
+}
+
+#invent-newsocial-container{
+	margin: 0;
+	padding:10px;
+	height:100px;
+}
+
+#invent-newsocial-container>label{
+	clear:both;
+	width:200px;
+	padding-right:20px;
+	text-align:right;
+	float:left;
+}
+#invent-newsocial-container>div{
+	float:left;
+}
+#invent-newsocial-container>div>input{
+	width:200px;
+	float:left;
+	margin-right:10px;
+}
+
+#invent-newsocial-submit-container{
+	clear:both;
+	text-align:right;
+	padding: 10px 0 10px 380px;
+}
+
+.invent-remove-button{
+	background:#fcfcfc url('../images/ui/x.png') top left no-repeat;
+	background-position: 6px 8px;
+	clear:both;
+	position:absolute;
+	left:20px;
+	margin-top:10px;
+	padding:4px;
+	padding-left:20px;
+	border:1px solid #ddd;
+	border-radius:5px;
+	cursor:pointer;
+}
+.invent-remove-button-clear{
+	clear:both;
+	height:30px;
 }

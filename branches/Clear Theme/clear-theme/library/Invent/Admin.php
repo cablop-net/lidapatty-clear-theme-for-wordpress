@@ -99,10 +99,9 @@ class Invent_Admin {
 		if(!current_user_can('edit_post', $post_id))
 			return false;
 
-		$post_id = $post->post_parent;
+		if ( $post->post_type == 'revision' ) return false;
 
 		// @todo: rewrite that code to more flexible form
-		// @todo: use wp_is_post_revision() to get the ID of the real post.
 		if(isset($_POST['_invent_sidebar_position']) && trim($_POST['_invent_sidebar_position'])) {
 			$_POST['_invent_sidebar_position'] = (int) $_POST['_invent_sidebar_position']; // it's 1=left,2=right or 3=no sidebar
 			$oldValue = get_post_meta($post_id, '_invent_sidebar_position', true);
@@ -228,6 +227,8 @@ class Invent_Admin {
 		register_setting('invent-social', 'invent-socials');
 		register_setting('invent-social', 'invent-socials-onoff');
 		register_setting('invent-social', 'invent-socials-position');
+		register_setting('invent-social', 'invent-socials-titles');
+		register_setting('invent-social', 'invent-socials-icons');
 
 		register_setting('invent-slider-nivo', 'invent-slider'); // images
 		register_setting('invent-slider-nivo', 'invent-slider-titles');
@@ -241,6 +242,7 @@ class Invent_Admin {
 		register_setting('invent-slider-nivo', 'invent-slider-control-navigation');
 		register_setting('invent-slider-nivo', 'invent-slider-direction-navigation');
 		register_setting('invent-slider-nivo', 'invent-slider-caption-color');
+		register_setting('invent-slider-nivo', 'invent-slider-height');
 
 		register_setting('invent-slider-piecemaker', 'invent-slider'); // images
 		register_setting('invent-slider-piecemaker', 'invent-slider-titles');
@@ -284,11 +286,14 @@ class Invent_Admin {
 		add_submenu_page('invent', 'Social Media', 'Social Media Settings', 'administrator', 'invent-social', Array($this, 'socialSettingsPage'));
 		add_submenu_page('invent', 'Contact Settings', 'Contact Settings', 'administrator', 'invent-contact', Array($this, 'contactSettingsPage'));
 		 */
+		//global $menu;
+		//$menuPosition = 27;
+		//while(isset($menu[$menuPosition])) $menuPosition++;
 
 		$f1 = 'add_menu_page';
 		$f2 = 'add_submenu_page';
 		// hack for theme check, we can't use add_theme_page because of tree structure of our option pages
-		$f1('Invent theme help', 'Invent', 'administrator', 'invent', Array($this, 'helpPage'), get_template_directory_uri().'/library/images/invent.png', 25);
+		$f1('Invent theme help', 'Invent', 'administrator', 'invent', Array($this, 'helpPage'), get_template_directory_uri().'/library/images/invent.png');
 		$f2('invent', 'General', 'General Settings', 'administrator', 'invent-general', Array($this, 'generalSettingsPage'));
 		$f2('invent', 'Blog', 'Blog Settings', 'administrator', 'invent-blog', Array($this, 'blogSettingsPage'));
 		$f2('invent', 'Sliders', 'Nivo Slider Settings', 'administrator', 'invent-slider-nivo', Array($this, 'sliderNivoSettingsPage'));

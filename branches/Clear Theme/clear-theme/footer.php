@@ -37,10 +37,10 @@
 $socialsOnOff = get_option('invent-socials-onoff');
 if($socialsOnOff && (get_option('invent-socials-position')=='footer' || get_option('invent-socials-position')=='both')) {
 ?>
-				<p><?php _e('Visit also our social profiles:','invent') ?></p>
+				<p><?php echo __('Visit also our social profiles:','invent') ?></p>
 <?php } ?>
 			</div>
-			<a href="#" id="scrolltop" title="Scroll to top">Scroll to top</a>
+			<a href="#" id="scrolltop" title="<?php echo __('Scroll to top') ?>"><?php echo __('Scroll to top') ?></a>
 		</div>
 
 		<div class="wrapper">

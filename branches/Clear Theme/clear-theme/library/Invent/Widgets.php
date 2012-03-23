@@ -425,7 +425,7 @@ class Invent_Widget_PopularPosts extends WP_Widget {
 			$output .= '<ul>';
 			foreach ($posts as $links) {
 				$imgId = get_post_meta($links->ID, '_thumbnail_id', true);
-				$output .= "\t" . '<li><a href="' . get_permalink($links->ID) . '"><span class="post-thumb">'.wp_get_attachment_image($imgId, 'invent-widget-small').'</span>' . $links->post_title . '</a></li>' . "\n";
+				$output .= "\t" . '<li><a href="' . get_permalink($links->ID) . '"><span class="post-thumb">'.wp_get_attachment_image($imgId, 'invent-widget-small').'</span><span class="invent-title">' . $links->post_title . '</span></a></li>' . "\n";
 			}
 			$output .= '</ul>';
 		}

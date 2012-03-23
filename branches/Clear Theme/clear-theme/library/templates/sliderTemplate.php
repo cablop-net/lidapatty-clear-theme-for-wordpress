@@ -36,7 +36,6 @@ $sliderTitles = get_option('invent-slider-titles');
 
 					</div>
 
-
 					<div class="invent-slide-remove">
 						<div class="icon"></div> <?php _e('Remove image from slider','invent') ?>
 					</div>

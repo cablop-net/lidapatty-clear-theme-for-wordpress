@@ -155,6 +155,41 @@ function importDummyData(part){
 		});
 	}
 
+function inventInitCheckboxes($){
+		$('.invent-checkbox').not('.parsed').click(function(){
+
+		
+		if($(this).hasClass('selected'))
+		{
+			if(!$.browser.msie || $.browser.version=='9.0')
+				$('.invent-input-onoff', this).stop().animate({'background-position': '-40px 0'}, 300);
+			$(this).removeClass('selected');
+			$('input', this).prop('checked', false);
+		}
+		else
+		{
+			if(!$.browser.msie || $.browser.version=='9.0')
+				$('.invent-input-onoff', this).stop().animate({'background-position': '0px 0px'}, 300);
+			$(this).addClass('selected');
+			$('input', this).prop('checked', true);
+		}
+	});
+
+	/* social items */
+	$('#invent-social-items .invent-checkbox').not('.parsed').click(function(){
+		if($(this).hasClass('selected'))
+		{
+			$('.invent-input-text', $(this).parent()).prop('disabled', false).removeClass('disabled');
+		}
+		else
+		{
+			$('.invent-input-text', $(this).parent()).prop('disabled', true).addClass('disabled');
+		}
+	});
+	
+	$('.invent-checkbox').not('.parsed').addClass('parsed');
+
+}
 
 jQuery(document).ready(function($){
 
@@ -193,35 +228,7 @@ jQuery(document).ready(function($){
 	});
 
 
-	$('.invent-checkbox').click(function(){
-		
-		if($(this).hasClass('selected'))
-		{
-			if(!$.browser.msie || $.browser.version=='9.0')
-				$('.invent-input-onoff', this).stop().animate({'background-position': '-40px 0'}, 300);
-			$(this).removeClass('selected');
-			$('input', this).prop('checked', false);
-		}
-		else
-		{
-			if(!$.browser.msie || $.browser.version=='9.0')
-				$('.invent-input-onoff', this).stop().animate({'background-position': '0px 0px'}, 300);
-			$(this).addClass('selected');
-			$('input', this).prop('checked', true);
-		}
-	});
-
-	/* social items */
-	$('#invent-social-items .invent-checkbox').click(function(){
-		if($(this).hasClass('selected'))
-		{
-			$('.invent-input-text', $(this).parent()).prop('disabled', false).removeClass('disabled');
-		}
-		else
-		{
-			$('.invent-input-text', $(this).parent()).prop('disabled', true).addClass('disabled');
-		}
-	});
+	inventInitCheckboxes($);
 
 	$('.invent-80x80-container').click(function(){
 		if(!$(this).hasClass('selected'))
@@ -237,6 +244,22 @@ jQuery(document).ready(function($){
 		}
 	});
 
+	$('.invent-image-upload').each(function(){
+
+		var container = this;
+		$('.invent-image-upload-button', this).click(function() {
+			formfield = $('.invent-image-upload-input', container);
+			tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
+			return false;
+		});
+
+		window.send_to_editor = function(html) {
+			imgurl = jQuery('img',html).attr('src');
+			$('.invent-image-upload-input', container).val(imgurl);
+			tb_remove();
+		}
+
+	});
 
 	$('.invent-radio').click(function(){
 		if(!$(this).hasClass('selected'))
@@ -265,6 +288,7 @@ jQuery(document).ready(function($){
 	initSlider('#invent-slider-piecemaker-cubedistance', '#invent-slider-piecemaker-cube-distance', '', 0, 200, 1);
 	initSlider('#invent-slider-piecemaker-delay-slider', '#invent-slider-piecemaker-delay', '', 0, 1, 0.1);
 
+	initSlider('#invent-slider-sheight', '#invent-slider-height', 'px', 60, 500, 10);
 	initSlider('#invent-slider-ttime', '#invent-slider-time', 's', 0.1, 5, 0.1);
 	initSlider('#invent-slider-number-of-slices', '#invent-slider-slices', '', 2, 25, 1);
 	initSlider('#invent-slider-ptime', '#invent-slider-pause-time', 's', 1, 10, 0.5);
@@ -278,10 +302,8 @@ jQuery(document).ready(function($){
 	initSlider('#invent-g-h6', '#invent-general-h6', 'px', 12, 48, 1);
 	initSlider('#invent-g-nav-font-size', '#invent-general-nav-font-size', 'px', 8, 16, 1);
 
-
 	initColorPicker('#invent-slider-caption-color','#invent-slider-caption-color-cpicker-preview','#invent-slider-caption-color-cpicker-preview');
 	initColorPicker('#invent-footer-background-color','#invent-footer-background-color-cpicker-preview','#invent-footer-background-color-cpicker-preview');
-
 
 	initColorPicker('#invent-general-h1-color','#invent-h1-cpicker-preview','#invent-h1-cpicker-preview');
 	initColorPicker('#invent-general-h2-color','#invent-h2-cpicker-preview','#invent-h2-cpicker-preview');
@@ -342,7 +364,40 @@ jQuery(document).ready(function($){
 	});
 
 
+	$('#invent-newsocial-submit').click(function(){
 
+		var socialName = $('#invent-newsocial-name').val();
+		if(socialName=='') { alert('Please enter a title'); return false;}
+		var n = 0;
+		while($('#invent-social'+n).length!=0)
+			n++;
+
+		var socialId = 'social'+n;
+		var socialIcon = $('#invent-newsocial-icon').val();
+		
+		var row = $('<div></div>').addClass('invent-settings-row');
+		var label = '<label for="invent-'+socialId+'" id="invent-'+socialId+'-label">'+socialName+'</label>';
+		row.append(label);
+
+		var containerDiv = $('<div><input type="hidden" name="invent-socials-icons['+socialId+']" value="'+socialIcon+'" /><input type="hidden" name="invent-socials-titles['+socialId+']" value="'+socialName+'" /><div class="invent-checkbox left"><div class="invent-input-onoff"></div><div class="invent-input-border"></div><input type="checkbox" name="invent-socials-onoff['+socialId+']" /></div>'+
+		'<div class="invent-social-http">&nbsp;</div><input type="text" id="invent-'+socialId+'" name="invent-socials['+socialId+']" value="" class="invent-input-text disabled" disabled="disabled"/><div class="invent-handler"></div><div class="invent-remove-button">Remove this profile</div><div class="invent-remove-button-clear"></div></div>');
+
+		row.append(containerDiv);
+
+
+		$('.invent-remove-button',row).click(function(){
+			$(this).parent().parent().remove();
+		})
+
+		$('#invent-newsocial-spot').before(row);
+		inventInitCheckboxes($);
+		Cufon.refresh();
+		return false;
+	});
+
+	$('.invent-remove-button').click(function(){
+		$(this).parent().parent().remove();
+	})
 
 });
 

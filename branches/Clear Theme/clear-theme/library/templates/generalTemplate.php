@@ -116,7 +116,7 @@
 						<br class="clear"/>
 
 					</div>
-				</div>
+			</div>
 
 		<div class="invent-settings-row">
 			<label><strong><?php _e('Navigation color','invent') ?></strong></label>

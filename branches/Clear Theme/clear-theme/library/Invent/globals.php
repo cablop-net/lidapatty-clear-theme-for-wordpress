@@ -59,6 +59,8 @@ add_option('invent-slider-pause-time', '6.5');
 add_option('invent-slider-caption-color', '#444444');
 add_option('invent-slider-control-navigation', '1');
 add_option('invent-slider-direction-navigation', '1');
+add_option('invent-slider-height', '460');
+
 
 add_option('invent-slider-piecemaker-effects', 'easeInOutQuart');
 add_option('invent-slider-piecemaker-slices', '13');
@@ -81,6 +83,8 @@ add_option('invent-map-zoom', 5);
 
 add_option('invent-socials', Array());
 add_option('invent-socials-onoff', Array());
+add_option('invent-socials-icons', 'footer');
+add_option('invent-socials-titles', 'footer');
 add_option('invent-socials-position', 'footer');
 
 add_image_size('invent-small', 210, 110, true); // 1-4
@@ -107,7 +111,7 @@ add_image_size('invent-post-wide-thumbnail', 930, 2000, false);
  * @param string $text Optional, default is false. If string, then will be link text.
  * @return string HTML content.
  */
-function invent_get_attachment_link($id = 0, $size = 'thumbnail', $permalink = false, $icon = false, $text = false, $group = 'default', $link=true) {
+function invent_get_attachment_link($id = 0, $size = 'thumbnail', $permalink = false, $icon = false, $text = false, $group = 'default', $link=true, $externalUrl = null) {
 	$id = intval($id);
 	$_post = & get_post($id);
 
@@ -130,8 +134,12 @@ function invent_get_attachment_link($id = 0, $size = 'thumbnail', $permalink = f
 	if (trim($link_text) == '')
 		$link_text = $_post->post_title;
 
-	if($link)
-		return apply_filters('wp_get_attachment_link', '<a href="' . $url . '" title="' . $post_title . '" rel="gallery-box-' . $group . '"><span class="image-hover"></span><span class="image-hover-icon"></span>' . $link_text . '</a>', $id, $size, $permalink, $icon, $text);
+	if($link) {
+		if($externalUrl)
+			return apply_filters('wp_get_attachment_link', '<a href="' . $externalUrl . '" title="' . $post_title . '" ><span class="image-hover"></span><span class="image-hover-icon image-url-icon"></span>' . $link_text . '</a>', $id, $size, $permalink, $icon, $text);
+		else
+			return apply_filters('wp_get_attachment_link', '<a href="' . $url . '" title="' . $post_title . '" rel="gallery-box-' . $group . '"><span class="image-hover"></span><span class="image-hover-icon"></span>' . $link_text . '</a>', $id, $size, $permalink, $icon, $text);
+	}
 	else
 		return apply_filters('wp_get_attachment_link', $link_text, $id, $size, $permalink, $icon, $text);
 }
