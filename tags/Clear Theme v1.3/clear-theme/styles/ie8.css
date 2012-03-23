@@ -1,0 +1,31 @@
+.image-hover,.image-hover-icon{
+/*	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);*/
+}
+
+.image-hover-icon {
+	background-image: url('../images/l2.png');
+}
+
+body{
+    overflow:auto;
+}
+
+#scrolltop-left {
+	width:48%;
+}
+
+#nav *{
+    z-index:1010 !important;
+}
+
+#content{
+    z-index: 1;
+}
+
+input{line-height:30px;}
+
+
+ .narrow #scrolltop-left{
+	width:629px;
+}
