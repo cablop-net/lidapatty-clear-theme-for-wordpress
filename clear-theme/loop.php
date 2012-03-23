@@ -76,7 +76,7 @@
 
 					<?php if(get_option('invent-blog-show-metadata')) { ?>
 					<ul class="post-info">
-						<li class="post-info-time"><?php echo get_post_time('F j, Y',false, null, true) ?></li>
+						<li class="post-info-time"><?php echo get_the_date() ?></li>
 						<li class="post-info-category"><?php echo get_the_category_list( ', ' ) ?></li>
 						<li class="post-info-comments"><?php
 							$number = get_comments_number();
@@ -97,8 +97,8 @@
 						<?php the_content( '' ); ?>
 
 						
-						<p class="clear left post-read-more"> <a href="<?php the_permalink(); ?>" class="invent-button"><span><?php _e('Read more...', 'invent') ?></span></a></p>
 					</div>
+						<p class="clear left post-read-more"> <a href="<?php the_permalink(); ?>" class="invent-button"><span><?php _e('Read more...', 'invent') ?></span></a></p>
 
 				</div><!-- #post-## -->
 

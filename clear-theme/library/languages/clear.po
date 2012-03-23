@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-21 06:27+0200\n"
+"POT-Creation-Date: 2011-09-08 15:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../contactPage.php:13
+#: ../contactPage.php:13 ../../comments.php:61
 msgid "Name"
 msgstr ""
 
@@ -49,48 +49,20 @@ msgstr ""
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: ../Invent/globals.php:115
+#: ../Invent/globals.php:119
 msgid "Missing Attachment"
 msgstr ""
 
-#: ../Invent/globals.php:141
+#: ../Invent/globals.php:149
 msgid "Primary Navigation"
 msgstr ""
 
-#: ../Invent/globals.php:222
+#: ../Invent/globals.php:230
 msgid "Reply"
 msgstr ""
 
-#: ../Invent/globals.php:223
+#: ../Invent/globals.php:231
 msgid "Log in to Reply"
-msgstr ""
-
-#: ../Invent/globals.php:259
-msgid "Gallery items"
-msgstr ""
-
-#: ../Invent/globals.php:260
-msgid "Gallery item"
-msgstr ""
-
-#: ../Invent/globals.php:261
-msgid "Add new gallery item"
-msgstr ""
-
-#: ../Invent/globals.php:283
-msgid "Galleries"
-msgstr ""
-
-#: ../Invent/globals.php:284
-msgid "Gallery"
-msgstr ""
-
-#: ../Invent/globals.php:285
-msgid "Add gallery"
-msgstr ""
-
-#: ../Invent/globals.php:286
-msgid "All Galleries"
 msgstr ""
 
 #: ../Invent/Site.php:55
@@ -110,11 +82,11 @@ msgstr ""
 msgid "Pingback:"
 msgstr ""
 
-#: ../Invent/Site.php:111
+#: ../Invent/Site.php:112
 msgid "Next page"
 msgstr ""
 
-#: ../Invent/Site.php:112
+#: ../Invent/Site.php:113
 msgid "Previous page"
 msgstr ""
 
@@ -239,37 +211,6 @@ msgstr ""
 msgid "Fourth footer widget area"
 msgstr ""
 
-#: ../plugins/twitter.php:101
-#, php-format
-msgid "%s ago"
-msgstr ""
-
-#: ../plugins/twitter.php:103
-msgid "Y/m/d"
-msgstr ""
-
-#: ../plugins/twitter.php:105
-#, php-format
-msgid "%s"
-msgstr ""
-
-#: ../plugins/twitter.php:252
-msgid "Twitter Widgets"
-msgstr ""
-
-#: ../plugins/twitter.php:253
-msgid "How many Twitter widgets would you like?"
-msgstr ""
-
-#: ../plugins/twitter.php:257
-msgid "Save"
-msgstr ""
-
-#: ../plugins/twitter.php:271
-#, php-format
-msgid "Twitter #%d"
-msgstr ""
-
 #: ../templates/blogTemplate.php:3
 msgid "Blog settings"
 msgstr ""
@@ -332,7 +273,7 @@ msgstr ""
 
 #: ../templates/contactTemplate.php:70 ../templates/generalTemplate.php:581
 #: ../templates/sliderPiecemakerTemplate.php:130
-#: ../templates/sliderTemplate.php:52 ../templates/socialTemplate.php:67
+#: ../templates/sliderTemplate.php:51 ../templates/socialTemplate.php:102
 msgid "Save Changes"
 msgstr ""
 
@@ -522,32 +463,36 @@ msgid "Transition effects"
 msgstr ""
 
 #: ../templates/sliderNivoTemplate.php:32
+msgid "Slider height"
+msgstr ""
+
+#: ../templates/sliderNivoTemplate.php:44
 #: ../templates/sliderPiecemakerTemplate.php:33
 msgid "Transition time"
 msgstr ""
 
-#: ../templates/sliderNivoTemplate.php:43
+#: ../templates/sliderNivoTemplate.php:55
 #: ../templates/sliderPiecemakerTemplate.php:44
 msgid "Pause time"
 msgstr ""
 
-#: ../templates/sliderNivoTemplate.php:65
+#: ../templates/sliderNivoTemplate.php:77
 msgid "Caption color"
 msgstr ""
 
-#: ../templates/sliderNivoTemplate.php:78
+#: ../templates/sliderNivoTemplate.php:90
 msgid "Control navigation"
 msgstr ""
 
-#: ../templates/sliderNivoTemplate.php:85
+#: ../templates/sliderNivoTemplate.php:97
 msgid "Direction navigation"
 msgstr ""
 
-#: ../templates/sliderNivoTemplate.php:92
+#: ../templates/sliderNivoTemplate.php:104
 msgid "Navigation arrows"
 msgstr ""
 
-#: ../templates/sliderNivoTemplate.php:125
+#: ../templates/sliderNivoTemplate.php:137
 #: ../templates/sliderPiecemakerTemplate.php:73
 msgid "Number of slices"
 msgstr ""
@@ -592,11 +537,11 @@ msgstr ""
 msgid "Slide background color"
 msgstr ""
 
-#: ../templates/sliderTemplate.php:41
+#: ../templates/sliderTemplate.php:40
 msgid "Remove image from slider"
 msgstr ""
 
-#: ../templates/sliderTemplate.php:55
+#: ../templates/sliderTemplate.php:54
 msgid "Add new slide"
 msgstr ""
 
@@ -614,4 +559,84 @@ msgstr ""
 
 #: ../templates/socialTemplate.php:16
 msgid "Footer"
+msgstr ""
+
+#: ../templates/socialTemplate.php:18
+msgid "Both"
+msgstr ""
+
+#: ../templates/socialTemplate.php:76
+msgid "Remove this profile"
+msgstr ""
+
+#: ../../footer.php:40
+msgid "Visit also our social profiles:"
+msgstr ""
+
+#: ../../footer.php:43
+msgid "Scroll to top"
+msgstr ""
+
+#: ../../loop.php:47 ../../loop.php:114
+msgid "Older posts"
+msgstr ""
+
+#: ../../loop.php:48 ../../loop.php:115
+msgid "Newer posts"
+msgstr ""
+
+#: ../../loop.php:55
+msgid "Not Found"
+msgstr ""
+
+#: ../../loop.php:57
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr ""
+
+#: ../../loop.php:84 ../../single.php:52
+msgid "% Comments"
+msgstr ""
+
+#: ../../loop.php:86 ../../single.php:54
+msgid "No Comments"
+msgstr ""
+
+#: ../../loop.php:88 ../../single.php:56
+msgid "1 Comment"
+msgstr ""
+
+#: ../../loop.php:101
+msgid "Read more..."
+msgstr ""
+
+#: ../../comments.php:2
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: ../../comments.php:21 ../../comments.php:43
+msgid "Older Comments"
+msgstr ""
+
+#: ../../comments.php:22 ../../comments.php:44
+msgid "Newer Comments"
+msgstr ""
+
+#: ../../comments.php:52
+msgid "Comments are closed."
+msgstr ""
+
+#: ../../comments.php:63
+msgid "Email"
+msgstr ""
+
+#: ../../comments.php:65
+msgid "Website"
+msgstr ""
+
+#: ../../header.php:32
+#, php-format
+msgid "Page %s"
 msgstr ""

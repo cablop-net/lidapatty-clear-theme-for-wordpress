@@ -33,7 +33,7 @@ if($sidebarPosition == 1) { ?>
 				</div>
 <?php } ?>
 
-				<?php if($sidebarPosition<3) { ?><div class="column-3-4<?php if($sidebarPosition==1) echo ' column-last'; ?>"><?php } ?>
+				<?php if($sidebarPosition<3) { ?><div class="column-3-4<?php if($sidebarPosition==1) echo ' column-last'; ?>"><?php } else { ?> <div class="clear" style="height:1px"></div><?php } ?>
 
 				<!-- post content -->
 			<?php if ( have_posts() ) : the_post(); ?>
@@ -44,7 +44,7 @@ if($sidebarPosition == 1) { ?>
 
 					<?php if(get_option('invent-blog-show-metadata')) { ?>
 					<ul class="post-info">
-						<li class="post-info-time"><?php echo get_post_time('F j, Y',false, null, true) ?></li>
+						<li class="post-info-time"><?php echo get_the_date() ?></li>
 						<li class="post-info-category"><?php echo get_the_category_list( ', ' ) ?></li>
 						<li class="post-info-comments"><?php
 							$number = get_comments_number();

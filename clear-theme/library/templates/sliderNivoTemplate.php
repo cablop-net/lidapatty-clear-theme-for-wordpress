@@ -29,6 +29,18 @@
 		</div>
 
 		<div class="invent-settings-row">
+			<label><?php _e('Slider height','invent') ?></label>
+			<div>
+				<div class="invent-slider-container">
+					<div id="invent-slider-sheight" class="invent-slider"></div>
+					<div id="invent-slider-sheight-value" class="invent-slider-value"></div>
+				</div>
+				<input type="hidden" id="invent-slider-height" name="invent-slider-height" value="<?php echo format_to_edit(get_option('invent-slider-height')) ?>" />
+
+			</div>
+		</div>
+
+		<div class="invent-settings-row">
 			<label><?php _e('Transition time','invent') ?></label>
 			<div>
 				<div class="invent-slider-container">

@@ -42,10 +42,6 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/styles/site.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/styles/nivo-slider.css" media="screen" />
-	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/styles/superfish.css" />
-	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/styles/fancybox.css" />
-	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/styles/invent-ui.css" />
 
 	<!--[if IE]>
 	<link rel="stylesheet" type="text/css" href="styles/ie9.css"/>
@@ -80,12 +76,20 @@
 
 		<?php $navType = (int) get_option('invent-nav-type'); if(!$navType) $navType = 1; ?>
 
-		.button, #nav>li>a, .button span, #nav>li>a span {
+		.invent-button, #nav>li>a, .invent-button span, #nav>li>a span {
 			background-image: url('<?php echo get_template_directory_uri() ?>/images/nav/<?php echo $navType; ?>.png');
 		}
 
 		#nav>li>a{
 			font-size: <?php echo get_option('invent-general-nav-font-size'); ?>px;
+		}
+		/* Nivo slider height adjustment */
+		#slider-inner-wrapper, #slider,.nivoSlider a.nivo-imageLink{
+			height:<?php echo get_option('invent-slider-height'); ?>px !important;
+		}
+
+		.nivo-directionNav a{
+			top:<?php echo get_option('invent-slider-height')/2-24 ?>px;
 		}
 	</style>
 
